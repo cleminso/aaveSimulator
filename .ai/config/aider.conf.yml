@@ -1,0 +1,63 @@
+# Note: You can only put OpenAI and Anthropic API keys in the yaml
+# config file. Keys for all APIs can be stored in a .env file
+# https://aider.chat/docs/config/dotenv.html
+
+alias:
+  - flash2-thinking-exp:gemini/gemini-2.0-flash-thinking-exp-1219
+  - flash2-exp:gemini/gemini-2.0-flash-exp
+  - gemini-exp:gemini/gemini-exp-1206
+  - v-qwen:openai/qwen32b
+  - v-llama-huge:openai/llama-3.1-405b
+  - v-llama-big:openai/llama-3.3-70b
+  - v-llama-tiny:openai/llama-3.2-3b
+  - mistral-large:mistral/mistral-large-latest
+  - codestral:mistral/codestral-latest
+  - ministral:mistral/ministral-8b-latest
+  - ministral3b:mistral/ministral-8b-latest
+  - o-qwq:ollama_chat/qwq
+  - o-dolphin3:ollama_chat/dolphin3
+  - f-dsv3:fireworks_ai/accounts/fireworks/models/deepseek-v3
+  - t-dsv3:together_ai/deepseek-ai/DeepSeek-V3
+  - t-qwq:together_ai/Qwen/QwQ-32B-Preview
+
+read:
+  - "docs/CONVENTIONS.MD"
+  - "docs/CONTEXT.MD"
+  - "docs/README.MD"
+  - "docs/aave-v3.graphql"
+
+architect: true
+cache-prompts: true
+
+#model: xxx
+#editor-model: xxx
+#weak-model: xxx
+
+edit-format: architect
+editor-edit-format: udiff
+
+model-settings-file: ".ai/config/.aider.model.settings.yml"
+model-metadata-file: ".ai/config/.aider.model.metadata.json"
+aiderignore: ".ai/config/.aider.ignore"
+env-file: ".ai/config/.env.aider"
+
+input-history-file: ".ai/logs/.aider.input.history.md"
+chat-history-file: ".ai/logs/.aider.chat.history.md"
+llm-history-file: ".ai/logs/.aider.llm.history.md"
+
+# Repomap settings:
+map-tokens: 1500
+## Log the conversation with the LLM to this file (for example, .aider.llm.history)
+
+light-mode: true
+## Set the markdown code theme (default: default, other options include monokai, solarized-dark, solarized-light, or a Pygments builtin style, see https://pygments.org/styles for available themes)
+code-theme: solarized-light
+
+subtree-only: true
+git: true
+
+watch-files: true
+
+analytics-disable: true
+## Specify the .env file to load (default: .env in git root)
+#editor: "zed --wait"
