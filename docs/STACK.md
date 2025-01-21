@@ -3,6 +3,7 @@
 **Front-end**:
 - ReactJS
 - TailwindCSS
+- ShadCN components
 
 **GraphQL API**: https://community-subgraphs.graph-eu.p2pify.com/3cdc87cad8efaec754312b0c6f2b9dd7/community-aave-v3
 
