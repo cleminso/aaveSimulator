@@ -1,21 +1,22 @@
-graph TD
-    A[User is on the simulator page]
-    A --> B1[User manually interacts with components without pasting address]
-    B1 --> C1[Calculate Health Factor Value using formula and display on 'healthFactorValue' section]
+flowchart TD
+    A[User is on the simulator page] --> B{User interacts with components}
+    B -->|Manually interacts without address| C[Calculate Health Factor using formula]
+    C --> D[Display Health Factor Value in 'healthFactorValue' section]
 
-    A --> B2[User pastes an Ethereum address inside 'userAddress' component]
-    B2 --> C2{Address has a borrowing position on AAVE?}
-    C2 -- Yes --> D2[Calculate Health Factor value]
-    D2 --> E2[Autofill all metrics values in associated components]
-    E2 --> F2[Calculate Health Factor Value using formula and display on 'healthFactorValue' section]
-    C2 -- No --> G2[Display an error modal]
+    A --> E{User pastes Ethereum address}
+    E -->|Address has borrowing position| F[Fetch data from API]
+    F --> G[Autofill metrics in components]
+    G --> H[Calculate Health Factor using formula]
+    H --> I[Display Health Factor Value in 'healthFactorValue' section]
 
-    A --> B3[User has already calculated a health factor on a previous address]
-    B3 --> C3[User removes the address in the user address input]
-    C3 --> D3[Clear page content]
-    D3 --> E3[Reset page to its default state]
+    E -->|Address has no borrowing position| J[Display error modal]
 
-    A --> B4[User address input is empty]
-    B4 --> C4[User enters an address in the user address input field]
-    C4 --> D4[Pull data from the API]
-    D4 --> E4[Update all components to display results based on returned data]
+    A --> K{User removes address}
+    K --> L[Clear page content]
+    L --> M[Reset page to default state]
+
+    A --> N{User enters new address}
+    N --> O[Fetch data from API]
+    O --> P[Update components with new data]
+    P --> Q[Recalculate Health Factor]
+    Q --> R[Display updated Health Factor Value]
