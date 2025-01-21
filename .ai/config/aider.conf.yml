@@ -34,12 +34,12 @@ read:
 architect: true
 cache-prompts: true
 
-#model: xxx
-#editor-model: xxx
+model: flash2-thinking-ex
+editor-model: v-qwen
 #weak-model: xxx
 
 edit-format: architect
-editor-edit-format: udiff
+editor-edit-format: whole
 
 model-settings-file: ".ai/config/.aider.model.settings.yml"
 model-metadata-file: ".ai/config/.aider.model.metadata.json"
