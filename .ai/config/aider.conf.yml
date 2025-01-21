@@ -34,7 +34,7 @@ read:
 architect: true
 cache-prompts: true
 
-model: flash2-thinking-ex
+model: flash2-thinking-exp
 editor-model: v-qwen
 #weak-model: xxx
 
