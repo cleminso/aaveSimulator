@@ -1,0 +1,33 @@
+# Acceptance Scenario in Cucumber / Gherkin
+
+**Feature**: Health Factor simulator
+
+	**Scenario**: Calculate health factor manually without address
+		Given the user is on the simulator page.
+        When the user manually interact with components without pasting address in 'userAddress' component.
+        Then the Health Factor Value should be calculated using the forumla provide and display on 'healthFactorValue' section.
+
+**Feature**: Real Position Health Factor Calculator
+
+	**Scenario**: Calculate health factor with pasted address and existing borrowing position
+        Given the user is on the simulator page.
+        When the user paste an Ethereum address inside 'userAddress' component
+        And the address has a borrowing position on AAVE
+        Then the Health Factor value should be calculated
+        And all metrics values should be autofilled in the associated component
+        And the Health Factor Value should be calculated using the formula provide and display on 'healthFactorValue' section.
+        But is the address has no borrowing position, display an error modal
+
+	**Scenario**: Clear the page content after clearing the address from the user address input
+    	Given the user is on the simulator page
+        And the user has already calculated a health factor on a previous address
+        When the user removes the address in the user address input
+        Then the page content should be cleared
+        And the page should be reset to its 'default state'
+
+    **Scenario**: Update health factor calculation upon connecting wallet with borrowing position
+        Given the user is on the simulator page
+        And the user address input is empty
+        When the user enters an address in the user address input field
+        Then the system will pull data from the API
+        And update all the components to display the results based on the returned data

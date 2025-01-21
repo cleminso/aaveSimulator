@@ -1,0 +1,21 @@
+graph TD
+    A[User is on the simulator page]
+    A --> B1[User manually interacts with components without pasting address]
+    B1 --> C1[Calculate Health Factor Value using formula and display on 'healthFactorValue' section]
+
+    A --> B2[User pastes an Ethereum address inside 'userAddress' component]
+    B2 --> C2{Address has a borrowing position on AAVE?}
+    C2 -- Yes --> D2[Calculate Health Factor value]
+    D2 --> E2[Autofill all metrics values in associated components]
+    E2 --> F2[Calculate Health Factor Value using formula and display on 'healthFactorValue' section]
+    C2 -- No --> G2[Display an error modal]
+
+    A --> B3[User has already calculated a health factor on a previous address]
+    B3 --> C3[User removes the address in the user address input]
+    C3 --> D3[Clear page content]
+    D3 --> E3[Reset page to its default state]
+
+    A --> B4[User address input is empty]
+    B4 --> C4[User enters an address in the user address input field]
+    C4 --> D4[Pull data from the API]
+    D4 --> E4[Update all components to display results based on returned data]
