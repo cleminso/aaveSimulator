@@ -21,10 +21,15 @@ alias:
   - t-qwq:together_ai/Qwen/QwQ-32B-Preview
 
 read:
-  - "docs/CONVENTIONS.MD"
-  - "docs/CONTEXT.MD"
-  - "docs/README.MD"
+  - "docs/aave-parameter.json"
+  - "docs/aave-parameter.md"
   - "docs/aave-v3.graphql"
+  - "docs/ACCEPTENCE.gherkin"
+  - "docs/CONVENTIONS.MD"
+  - "docs/FLOW-DIAGRAM.mermaid"
+  - "docs/README.MD"
+  - "docs/STACK"
+  - "v3-schema.graphql"
 
 architect: true
 cache-prompts: true
