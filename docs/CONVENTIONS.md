@@ -20,3 +20,4 @@
 	1. Make sure to compose on top of it and not modify the components directly
 10. We are building an app that should load quickly, and work on every browser, as well as browsers on mobile phones and tablets
 11. Do not ask for confirmation or any suggestion, follow the request precisely
+12. MAINTAIN the documents "docs/TODO.md" and after every update and maintain a changelog at the bottom of the file, in a journaling style

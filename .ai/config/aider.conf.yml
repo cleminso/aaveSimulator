@@ -27,10 +27,12 @@ read:
   - "docs/ACCEPTANCE.gherkin"
   - "docs/CONVENTIONS.MD"
   - "docs/FLOW-DIAGRAM.mermaid"
-  - "docs/README.MD"
+  - "docs/README.md"
   - "docs/STACK.md"
   - "docs/v3.schema.graphql"
-  - "TODO.md"
+
+write:
+  - "docs/TODO.md"
 
 architect: true
 cache-prompts: true
