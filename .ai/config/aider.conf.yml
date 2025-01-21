@@ -24,18 +24,19 @@ read:
   - "docs/aave-parameter.json"
   - "docs/aave-parameter.md"
   - "docs/aave-v3.graphql"
-  - "docs/ACCEPTENCE.gherkin"
+  - "docs/ACCEPTANCE.gherkin"
   - "docs/CONVENTIONS.MD"
   - "docs/FLOW-DIAGRAM.mermaid"
   - "docs/README.MD"
-  - "docs/STACK"
-  - "v3-schema.graphql"
+  - "docs/STACK.md"
+  - "docs/v3.schema.graphql"
+  - "TODO.md"
 
 architect: true
 cache-prompts: true
 
 model: flash2-thinking-exp
-editor-model: v-qwen
+editor-model: codestral
 #weak-model: xxx
 
 edit-format: architect
