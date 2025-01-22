@@ -3,14 +3,11 @@ import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { CurrencySelector } from "./currency-selector";
 
-interface CollateralSectionProps {
-  currency: string;
-}
-
-export function CollateralSection({ currency }: CollateralSectionProps) {
+export function CollateralSection() {
   const [tokenQuantity, setTokenQuantity] = useState(0);
-  const [tokenPrice, setTokenPrice] = useState(1500); // Example default price
+  const [tokenPrice, setTokenPrice] = useState(1500);
   const [usdValue, setUsdValue] = useState(0);
+  const [selectedCurrency, setSelectedCurrency] = useState("WETH");
 
   const handleTokenQuantityChange = (value: number) => {
     setTokenQuantity(value);
@@ -24,15 +21,18 @@ export function CollateralSection({ currency }: CollateralSectionProps) {
 
   return (
     <div className="space-y-4">
-      <CurrencySelector />
+      <CurrencySelector
+        onSelectCurrency={(currency) => setSelectedCurrency(currency)}
+      />
       {/* Token State */}
       <div className="space-y-3">
         <div className="flex space-x-4">
           <Input
             type="number"
             value={tokenQuantity}
+            label={`${selectedCurrency} Quantity`}
             onChange={(e) => handleTokenQuantityChange(Number(e.target.value))}
-            placeholder={`Enter ${currency} Quantity`}
+            placeholder={`Enter ${selectedCurrency} Quantity`}
             className="w-1/2"
           />
           <Input
@@ -54,9 +54,9 @@ export function CollateralSection({ currency }: CollateralSectionProps) {
         <div className="flex space-x-4">
           <Input
             type="number"
-            value={tokenPrice}
+            label={`${selectedCurrency} Price (USD)`}
             onChange={(e) => handleTokenPriceChange(Number(e.target.value))}
-            placeholder={`Enter ${currency} Price (USD)`}
+            placeholder={`Enter ${selectedCurrency} Price (USD)`}
             className="w-full"
           />
         </div>
