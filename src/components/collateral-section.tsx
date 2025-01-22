@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Slider } from "@/components/ui/slider";
-import { CurrencySelector } from "./currency-selector";
+import { TokenInputSection } from "./token-input-section";
 
 export function CollateralSection() {
   const [tokenQuantity, setTokenQuantity] = useState(0);
@@ -20,53 +18,14 @@ export function CollateralSection() {
   };
 
   return (
-    <div className="space-y-4">
-      <CurrencySelector
-        onSelectCurrency={(currency) => setSelectedCurrency(currency)}
-      />
-      {/* Token State */}
-      <div className="space-y-3">
-        <div className="flex space-x-4">
-          <Input
-            type="number"
-            value={tokenQuantity}
-            label={`${selectedCurrency} Quantity`}
-            onChange={(e) => handleTokenQuantityChange(Number(e.target.value))}
-            placeholder={`Enter ${selectedCurrency} Quantity`}
-            className="w-1/2"
-          />
-          <Input
-            type="number"
-            value={usdValue}
-            disabled
-            className="w-1/2"
-          />
-        </div>
-        <Slider
-          defaultValue={[0]}
-          max={20000}
-          step={1}
-          onValueChange={(value) => handleTokenQuantityChange(value[0])}
-        />
-      </div>
-      {/* Token Simulation */}
-      <div className="space-y-3">
-        <div className="flex space-x-4">
-          <Input
-            type="number"
-            label={`${selectedCurrency} Price (USD)`}
-            onChange={(e) => handleTokenPriceChange(Number(e.target.value))}
-            placeholder={`Enter ${selectedCurrency} Price (USD)`}
-            className="w-full"
-          />
-        </div>
-        <Slider
-          defaultValue={[1500]}
-          max={20000}
-          step={1}
-          onValueChange={(value) => handleTokenPriceChange(value[0])}
-        />
-      </div>
-    </div>
+    <TokenInputSection
+      currency={selectedCurrency}
+      onSelectCurrency={setSelectedCurrency}
+      tokenQuantity={tokenQuantity}
+      onTokenQuantityChange={handleTokenQuantityChange}
+      usdValue={usdValue}
+      tokenPrice={tokenPrice}
+      onTokenPriceChange={handleTokenPriceChange}
+    />
   );
 }
