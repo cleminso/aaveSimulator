@@ -50,6 +50,7 @@ export function TokenInputSection({
         <div className="flex space-x-4">
           <Input
             type="number"
+            value={tokenPrice}
             label={`${currency} Price (USD)`}
             onChange={(e) => onTokenPriceChange(Number(e.target.value))}
             placeholder={`Enter ${currency} Price (USD)`}
