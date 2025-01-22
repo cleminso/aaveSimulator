@@ -19,32 +19,37 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-const frameworks = [
+const currencies = [
   {
-    value: "next.js",
-    label: "Next.js",
+    value: "WETH",
+    label: "WETH",
   },
   {
-    value: "sveltekit",
-    label: "SvelteKit",
+    value: "WBTC",
+    label: "WBTC",
   },
   {
-    value: "nuxt.js",
-    label: "Nuxt.js",
+    value: "USDC",
+    label: "USDC",
   },
-  {
-    value: "remix",
-    label: "Remix",
-  },
-  {
-    value: "astro",
-    label: "Astro",
-  },
+  // Add more currencies here
 ];
 
-export function ComboboxDemo() {
+interface CurrencySelectorProps {
+  onSelectCurrency: (currency: string) => void;
+}
+
+export function CurrencySelector({
+  onSelectCurrency,
+}: CurrencySelectorProps) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
+
+  const handleCurrencySelect = (currencyValue: string) => {
+    setValue(currencyValue === value ? "" : currencyValue);
+    setOpen(false);
+    onSelectCurrency(currencyValue);
+  };
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -56,33 +61,30 @@ export function ComboboxDemo() {
           className="w-[200px] justify-between"
         >
           {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select framework..."}
+            ? currencies.find((currency) => currency.value === value)?.label
+            : "Select currency..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Search framework..." />
+          <CommandInput placeholder="Search currency..." />
           <CommandList>
-            <CommandEmpty>No framework found.</CommandEmpty>
+            <CommandEmpty>No currency found.</CommandEmpty>
             <CommandGroup>
-              {frameworks.map((framework) => (
+              {currencies.map((currency) => (
                 <CommandItem
-                  key={framework.value}
-                  value={framework.value}
-                  onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue);
-                    setOpen(false);
-                  }}
+                  key={currency.value}
+                  value={currency.value}
+                  onSelect={() => handleCurrencySelect(currency.value)}
                 >
                   <Check
                     className={cn(
                       "mr-2 h-4 w-4",
-                      value === framework.value ? "opacity-100" : "opacity-0",
+                      value === currency.value ? "opacity-100" : "opacity-0",
                     )}
                   />
-                  {framework.label}
+                  {currency.label}
                 </CommandItem>
               ))}
             </CommandGroup>
