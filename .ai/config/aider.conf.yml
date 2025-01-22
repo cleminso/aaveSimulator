@@ -30,13 +30,15 @@ read:
   - "docs/README.md"
   - "docs/STACK.md"
   # - "docs/v3.schema.graphql"
+
+file:
   - "docs/PROJECT.md"
 
 architect: true
 cache-prompts: true
 
 model: flash2-thinking-exp
-editor-model: codestral
+editor-model: flash2-exp
 #weak-model: xxx
 
 edit-format: architect

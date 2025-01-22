@@ -20,4 +20,4 @@
 	1. Make sure to compose on top of it and not modify the components directly
 10. We are building an app that should load quickly, and work on every browser, as well as browsers on mobile phones and tablets
 11. Do not ask for confirmation or any suggestion, follow the request precisely
-12. Every time a story is mentioned, maintain the todo list after every update and maintain a changelog at the bottom of the file, in a journaling style
+12. Maintain the todo list before starting work, break each down into tasks, and after every update and maintain a changelog at the bottom of the file, in a journaling style
