@@ -3,7 +3,7 @@
 ## Tasks
 
 - [x] Design the layout of the simulator page.
-- [ ] Add ShadCN components to the layout
+- [x] Add ShadCN components to the layout
 - [ ] Create input components for collateral and borrow amounts using ShadCN components.
 - [ ] Create a component to display the calculated Health Factor using ShadCN components.
 - [ ] Style the Health Factor display component to visually represent risk levels (safe, moderate, under-collateralized) using TailwindCSS classes.
@@ -33,5 +33,6 @@
 
 ## Changelog
 
-- [ ] 2024-07-11: Reordered tasks to prioritize UI-related tasks.
-- [ ] 2024-07-12: Added tasks for designing the layout of the simulator page.
+- [x] 2024-07-11: Reordered tasks to prioritize UI-related tasks.
+- [x] 2024-07-12: Added tasks for designing the layout of the simulator page.
+- [x] 2024-07-13: Removed old CSS files and replaced with TailwindCSS classes.
