@@ -31,7 +31,7 @@ read:
   - "docs/STACK.md"
   - "docs/v3.schema.graphql"
 
-write:
+file:
   - "docs/TODO.md"
 
 architect: true
