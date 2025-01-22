@@ -3,7 +3,7 @@
 import { CollateralSection } from "@/components/collateral-section";
 import { DebtSection } from "@/components/debt-section";
 
-export default function Home() {
+export default function Simulator() {
   return (
     <main className="p-8 space-y-8">
       <h1 className="text-2xl font-bold">Aave Health Factor Simulator</h1>
