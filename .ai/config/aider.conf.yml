@@ -3,7 +3,7 @@
 # https://aider.chat/docs/config/dotenv.html
 
 alias:
-  - flash2-thinking-exp:gemini/gemini-2.0-flash-thinking-exp-1219
+  - flash2-thinking-exp:gemini/gemini-2.0-flash-thinking-exp-0119
   - flash2-exp:gemini/gemini-2.0-flash-exp
   - gemini-exp:gemini/gemini-exp-1206
   - v-qwen:openai/qwen32b
@@ -21,15 +21,15 @@ alias:
   - t-qwq:together_ai/Qwen/QwQ-32B-Preview
 
 read:
-  - "docs/aave-parameter.json"
-  - "docs/aave-parameter.md"
-  - "docs/aave-v3.graphql"
+  # - "docs/aave-parameter.json"
+  # - "docs/aave-parameter.md"
+  # - "docs/aave-v3.graphql"
   - "docs/ACCEPTANCE.gherkin"
   - "docs/CONVENTIONS.MD"
   - "docs/FLOW-DIAGRAM.mermaid"
   - "docs/README.md"
   - "docs/STACK.md"
-  - "docs/v3.schema.graphql"
+  # - "docs/v3.schema.graphql"
 
 file:
   - "docs/TODO.md"
