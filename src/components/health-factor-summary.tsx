@@ -7,29 +7,29 @@ export function HealthFactorSummary() {
       <div className="flex flex-col gap-6 md:flex-row">
         <Card className="w-full md:w-1/3 h-[71px]">
           <CardTitle className="p-1 text-sm font-normal">Health Factor</CardTitle>
-          <CardContent className="p-1 text-xl font-normal font-mono tracking-tighter">1.8</CardContent>
+          <CardContent className="py-1 px-2 text-xl font-normal font-mono tracking-tighter">1.8</CardContent>
         </Card>
         <Card className="w-full md:w-1/3 h-[71px]">
           <CardTitle className="p-1 text-sm font-normal">Borrow Usage</CardTitle>
-          <CardContent className="p-1 text-xl font-normal font-mono tracking-tighter">65%</CardContent>
+          <CardContent className="py-1 px-2 text-xl font-normal font-mono tracking-tighter">65%</CardContent>
         </Card>
         <Card className="w-full md:w-1/3 h-[71px]">
           <CardTitle className="p-1 text-sm font-normal">Available Credit</CardTitle>
-          <CardContent className="p-1 text-xl font-normal font-mono tracking-tighter">1.500</CardContent>
+          <CardContent className="py-1 px-2 text-xl font-normal font-mono tracking-tighter">1.500</CardContent>
         </Card>
       </div>
       <div className="flex flex-col gap-6 md:flex-row">
         <Card className="w-full md:w-1/3 h-[71px]">
           <CardTitle className="p-1 text-sm font-normal">Total Collateral</CardTitle>
-          <CardContent className="p-1 text-xl font-normal font-mono tracking-tighter">10.000</CardContent>
+          <CardContent className="py-1 px-2 text-xl font-normal font-mono tracking-tighter">10.000</CardContent>
         </Card>
         <Card className="w-full md:w-1/3 h-[71px]">
           <CardTitle className="p-1 text-sm font-normal">Total Debt</CardTitle>
-          <CardContent className="p-1 text-xl font-normal font-mono tracking-tighter">6.500</CardContent>
+          <CardContent className="py-1 px-2 text-xl font-normal font-mono tracking-tighter">6.500</CardContent>
         </Card>
         <Card className="w-full md:w-1/3 h-[71px]">
           <CardTitle className="p-1 text-sm font-normal">Liquidation Threshold</CardTitle>
-          <CardContent className="p-1 text-xl font-normal font-mono tracking-tighter">80%</CardContent>
+          <CardContent className="py-1 px-2 text-xl font-normal font-mono tracking-tighter">80%</CardContent>
         </Card>
       </div>
     </div>
