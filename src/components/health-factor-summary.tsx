@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/tooltip";
 
 export function HealthFactorSummary() {
-  const healthFactorValue = 1.8; // Placeholder value for development
+  const healthFactorValue = 1.5; // Placeholder value for development
 
   const getBackgroundColor = (value: number) => {
     if (value < 1.1) return "bg-error";
@@ -32,7 +32,7 @@ export function HealthFactorSummary() {
           <Tooltip>
             <TooltipTrigger
               className={`flex items-center justify-center h-[35px] w-fit px-2 rounded-[2px] ${getBackgroundColor(
-                healthFactorValue
+                healthFactorValue,
               )}`}
             >
               <span className="font-mono text-xl text-primary">
