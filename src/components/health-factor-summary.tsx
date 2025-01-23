@@ -6,13 +6,13 @@ import {
 } from "@/components/ui/tooltip";
 
 export function HealthFactorSummary() {
-  const healthFactorValue = 1.8; // Placeholder value for development
+  const healthFactorValue = 1.05; // Placeholder value for development
 
   const getTooltipContentBackgroundColor = (value: number) => {
-    if (value <= 1.1) return "bg-error";
-    if (value < 2) return "bg-accent-secondary";
-    if (value >= 2) return "bg-success";
-    return "bg-secondary"; // Default background for TooltipContent
+    if (value <= 1.1) return "error";
+    if (value < 2) return "accent-secondary";
+    if (value >= 2) return "success";
+    return "primary"; // Default background for TooltipContent
   };
 
   const getTooltipMessage = (value: number) => {
@@ -38,7 +38,7 @@ export function HealthFactorSummary() {
               </span>
             </TooltipTrigger>
             <TooltipContent
-              className={`${getTooltipContentBackgroundColor(healthFactorValue)}`}
+              className={`bg-${getTooltipContentBackgroundColor(healthFactorValue)}`}
             >
               {getTooltipMessage(healthFactorValue)}
             </TooltipContent>
