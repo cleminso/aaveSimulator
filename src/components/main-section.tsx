@@ -7,9 +7,8 @@ export function MainSection() {
     <div className="flex flex-col gap-6">
       <Input
         type="text"
-        id="userAddress"
+        className="w-1/3 text-base"
         placeholder="Enter your Ethereum address"
-        className="text-base"
       />
       <HealthFactorSummary />
       <CollateralVsDebt />
