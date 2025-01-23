@@ -8,18 +8,18 @@ import {
 export function HealthFactorSummary() {
   const healthFactorValue = 1.5; // Placeholder value for development
 
-  const getTooltipContentBackgroundColor = (value: number) => {
-    if (value <= 1.1) return "error";
-    if (value > 1.1 && value < 2) return "accent-secondary";
-    if (value >= 2) return "success";
-    return "secondary"; // Default background for TooltipContent
+  const getTooltipTriggerBackgroundColor = (value: number) => {
+    if (value <= 1.1) return "bg-error";
+    if (value < 2) return "bg-accent-secondary";
+    if (value >= 2) return "bg-success";
+    return "bg-secondary"; // Default background for TooltipTrigger
   };
 
   const getTooltipMessage = (value: number) => {
     if (value <= 1.1) return "Under Collateralization";
     if (value > 1.1 && value < 2) return "Moderate Collateralization";
-    if (value > 2) return "Safe Collateralization";
-    return "Unknow Collateralization"; // Default message
+    if (value >= 2) return "Safe Collateralization";
+    return "Unknown Collateralization"; // Default message
   };
 
   return (
@@ -31,15 +31,13 @@ export function HealthFactorSummary() {
         <div className="ml-1">
           <Tooltip>
             <TooltipTrigger
-              className={`flex items-center justify-center h-[35px] w-fit px-2 rounded-[2px]`}
+              className={`flex items-center justify-center h-[35px] w-fit px-2 rounded-[2px] ${getTooltipTriggerBackgroundColor(healthFactorValue)}`}
             >
               <span className="font-mono text-xl text-primary">
                 {healthFactorValue}
               </span>
             </TooltipTrigger>
-            <TooltipContent
-              className={`bg-${getTooltipContentBackgroundColor(healthFactorValue)}`}
-            >
+            <TooltipContent>
               {getTooltipMessage(healthFactorValue)}
             </TooltipContent>
           </Tooltip>
