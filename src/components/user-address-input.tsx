@@ -4,9 +4,6 @@ import { Input } from "@/components/ui/input";
 
 export function UserAddressInput() {
   return (
-    <Input
-      type="text"
-      placeholder="Enter Ethereum Address"
-    />
+    <Input type="text" placeholder="Enter Ethereum Address" className="w-1/3" />
   );
 }
