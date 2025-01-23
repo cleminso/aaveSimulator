@@ -9,7 +9,9 @@ export default function Simulator() {
     <main className="p-8">
       <h1 className="text-2xl font-bold">Aave Health Factor Simulator</h1>
       <div className="mt-8 space-y-6">
-        <UserAddressInput />
+        <div className="w-1/3">
+          <UserAddressInput />
+        </div>
         <div className="flex flex-col gap-6 md:flex-row">
           <section className="w-full md:w-1/2 space-y-6">
             <h2 className="text-xl font-semibold">Collateral</h2>
