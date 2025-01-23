@@ -3,7 +3,9 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card";
 export function HealthFactorSummary() {
   return (
     <div className="flex flex-col gap-6">
-      <h2 className="text-[28px] font-medium text-primary tracking-tighter leading-[35px]">Health Factor Summary</h2>
+      <h2 className="text-[28px] font-medium text-primary tracking-tighter leading-[35px]">
+        Health Factor:
+      </h2>
       <div className="flex flex-col gap-6 md:flex-row">
         <Card className="w-full md:w-1/3 h-[71px] bg-secondary">
           <CardTitle className="p-2 pb-1.5 text-sm font-normal leading-[17.5px]">
