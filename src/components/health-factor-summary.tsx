@@ -6,20 +6,20 @@ import {
 } from "@/components/ui/tooltip";
 
 export function HealthFactorSummary() {
-  const healthFactorValue = 1.05; // Placeholder value for development
+  const healthFactorValue = 1.5; // Placeholder value for development
 
   const getTooltipContentBackgroundColor = (value: number) => {
     if (value <= 1.1) return "error";
-    if (value < 2) return "accent-secondary";
+    if (value > 1.1 && value < 2) return "accent-secondary";
     if (value >= 2) return "success";
-    return "primary"; // Default background for TooltipContent
+    return "secondary"; // Default background for TooltipContent
   };
 
   const getTooltipMessage = (value: number) => {
-    if (value < 1) return "Under Collateralization";
-    if (value >= 1.5 && value < 2) return "Moderate Collateralization";
+    if (value <= 1.1) return "Under Collateralization";
+    if (value > 1.1 && value < 2) return "Moderate Collateralization";
     if (value > 2) return "Safe Collateralization";
-    return "Normal Collateralization"; // Default message
+    return "Unknow Collateralization"; // Default message
   };
 
   return (
