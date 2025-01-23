@@ -6,11 +6,11 @@ import {
 } from "@/components/ui/tooltip";
 
 export function HealthFactorSummary() {
-  const healthFactorValue = 1.5; // Placeholder value for development
+  const healthFactorValue = 1; // Placeholder value for development
 
   const getTooltipTriggerBackgroundColor = (value: number) => {
     if (value <= 1.1) return "bg-error";
-    if (value < 2) return "bg-accent-secondary";
+    if (value > 1.1 && value < 2) return "bg-accent-secondary";
     if (value >= 2) return "bg-success";
     return "bg-secondary"; // Default background for TooltipTrigger
   };
@@ -49,7 +49,7 @@ export function HealthFactorSummary() {
             Total Borrowed:
           </CardTitle>
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
-            1.8
+            $
           </CardContent>
         </Card>
         <Card className="w-full md:w-1/3 h-[71px] bg-secondary">
@@ -57,7 +57,7 @@ export function HealthFactorSummary() {
             Available to borrow:
           </CardTitle>
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
-            65%
+            $
           </CardContent>
         </Card>
         <Card className="w-full md:w-1/3 h-[71px] bg-secondary">
@@ -65,7 +65,7 @@ export function HealthFactorSummary() {
             Collateral value:
           </CardTitle>
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
-            1.500
+            $
           </CardContent>
         </Card>
       </div>
@@ -75,7 +75,7 @@ export function HealthFactorSummary() {
             Liquidation threshold
           </CardTitle>
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
-            10.000
+            $
           </CardContent>
         </Card>
         <Card className="w-full md:w-1/3 h-[71px] bg-secondary">
@@ -83,7 +83,7 @@ export function HealthFactorSummary() {
             Current LTV / Max LTV
           </CardTitle>
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
-            6.500
+            0.00/90%
           </CardContent>
         </Card>
         <Card className="w-full md:w-1/3 h-[71px] bg-secondary">
