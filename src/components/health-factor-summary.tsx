@@ -10,9 +10,9 @@ export function HealthFactorSummary() {
 
   const getTooltipContentBackgroundColor = (value: number) => {
     if (value <= 1.1) return "bg-error";
-    if (value <= 1.99) return "bg-accent-secondary";
+    if (value < 2) return "bg-accent-secondary";
     if (value >= 2) return "bg-success";
-    return "bg-primary"; // Default background for TooltipContent
+    return "bg-secondary"; // Default background for TooltipContent
   };
 
   const getTooltipMessage = (value: number) => {
@@ -37,7 +37,9 @@ export function HealthFactorSummary() {
                 {healthFactorValue}
               </span>
             </TooltipTrigger>
-            <TooltipContent className={`${getTooltipContentBackgroundColor(healthFactorValue)}`}>
+            <TooltipContent
+              className={`${getTooltipContentBackgroundColor(healthFactorValue)}`}
+            >
               {getTooltipMessage(healthFactorValue)}
             </TooltipContent>
           </Tooltip>
