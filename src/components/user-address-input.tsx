@@ -7,7 +7,6 @@ export function UserAddressInput() {
     <Input
       type="text"
       placeholder="Enter Ethereum Address"
-      className="w-full"
     />
   );
 }
