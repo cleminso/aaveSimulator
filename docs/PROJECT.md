@@ -44,4 +44,7 @@
 - [x] 2024-07-14: Updated `CurrencySelector` to match container width when opened using `Popover`.
     - Modified `CurrencySelector` to accept and apply a `className` prop to `PopoverContent`.
     - Updated `TokenInputSection` to pass `w-full` as `className` to `CurrencySelector`.
+- [x] 2024-07-14: Added "Collateral Token" label to `CurrencySelector` in `collateral-section.tsx`.
+    - Wrapped `TokenInputSection` in a `div` container.
+    - Added a `Label` element with "Content-Large" typography styling (font-family: Roboto, font-weight: 500, font-size: 20px, line-height: 25px).
 - [ ] 2024-07-14: Added TODO list for implementing story 3: Clear page content after clearing address input.
