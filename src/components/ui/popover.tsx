@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 
 const Popover = PopoverPrimitive.Root;
 
+// Create a custom component that allows passing className to the component for customization AI!
 const PopoverTrigger = PopoverPrimitive.Trigger;
 
 const PopoverAnchor = PopoverPrimitive.Anchor;
