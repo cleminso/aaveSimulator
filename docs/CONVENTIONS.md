@@ -21,3 +21,6 @@
 10. We are building an app that should load quickly, and work on every browser, as well as browsers on mobile phones and tablets
 11. Do not ask for confirmation or any suggestion, follow the request precisely
 12. Maintain the todo list before starting work, break each down into tasks, and after every update and maintain a changelog at the bottom of the file, in a journaling style
+13. Think carefully before doing, but be mindful of how much you think, don't over-think
+14. Create 3-step numbered plans before coding
+15. Display current plan step clearly
