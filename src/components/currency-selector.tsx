@@ -54,7 +54,11 @@ export function CurrencySelector({
   };
 
   return (
-    <Popover open={open} onOpenChange={setOpen} className="w-full">
+    <Popover
+      open={open}
+      onOpenChange={setOpen}
+      className={cn("w-full", className)}
+    >
       <PopoverTrigger asChild>
         <Button
           variant="outline"

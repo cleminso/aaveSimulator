@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer base {
+    :root {
+        --bg-primary: #f4f4f5;
+        --bg-secondary: #d1d5db;
+        --text-primary: #18181b;
+        --text-secondary: #3f3f46;
+        --accent-primary: #3b82f6;
+        --accent-primary-disable: #2563eb;
+        --accent-secondary: #fbbf24;
+        --accent-secondary-disable: #eab308;
+        --success: #10b981;
+        --success-hover: #059669;
+        --error: #f87171;
+        --error-disable: #ef4444;
+        --border: #6b7280;
+    }
+}

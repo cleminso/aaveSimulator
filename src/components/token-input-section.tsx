@@ -32,7 +32,7 @@ export function TokenInputSection({
       {/* Token State */}
       <div className="space-y-3">
         <div className="flex space-x-4">
-          <div className="w-1/2 space-y-1">
+          <div className="w-2/3 space-y-1">
             <Label>{`${currency} Quantity`}</Label>
             <Input
               type="number"
@@ -41,7 +41,7 @@ export function TokenInputSection({
               placeholder={`Enter ${currency} Quantity`}
             />
           </div>
-          <div className="w-1/2 space-y-1">
+          <div className="w-1/3 space-y-1">
             <Label>USD Value</Label>
             <Input type="number" value={usdValue} disabled />
           </div>
