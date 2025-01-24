@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { CurrencySelector } from "./currency-selector";
+import { Label } from "@/components/ui/label";
 
 interface TokenInputSectionProps {
   currency: string;
@@ -31,15 +32,19 @@ export function TokenInputSection({
       {/* Token State */}
       <div className="space-y-3">
         <div className="flex space-x-4">
-          <Input
-            type="number"
-            value={tokenQuantity}
-            label={`${currency} Quantity`}
-            onChange={(e) => onTokenQuantityChange(Number(e.target.value))}
-            placeholder={`Enter ${currency} Quantity`}
-            className="w-1/2"
-          />
-          <Input type="number" value={usdValue} disabled className="w-1/2" />
+          <div className="w-1/2 space-y-1">
+            <Label>{`${currency} Quantity`}</Label>
+            <Input
+              type="number"
+              value={tokenQuantity}
+              onChange={(e) => onTokenQuantityChange(Number(e.target.value))}
+              placeholder={`Enter ${currency} Quantity`}
+            />
+          </div>
+          <div className="w-1/2 space-y-1">
+            <Label>USD Value</Label>
+            <Input type="number" value={usdValue} disabled />
+          </div>
         </div>
         <Slider
           defaultValue={[0]}
@@ -51,14 +56,15 @@ export function TokenInputSection({
       {/* Token Simulation */}
       <div className="space-y-3">
         <div className="flex space-x-4">
-          <Input
-            type="number"
-            value={tokenPrice}
-            label={`${currency} Price (USD)`}
-            onChange={(e) => onTokenPriceChange(Number(e.target.value))}
-            placeholder={`Enter ${currency} Price (USD)`}
-            className="w-full"
-          />
+          <div className="w-full space-y-1">
+            <Label>{`${currency} Price (USD)`}</Label>
+            <Input
+              type="number"
+              value={tokenPrice}
+              onChange={(e) => onTokenPriceChange(Number(e.target.value))}
+              placeholder={`Enter ${currency} Price (USD)`}
+            />
+          </div>
         </div>
         <Slider
           defaultValue={[1500]}
