@@ -24,7 +24,10 @@ export function TokenInputSection({
 }: TokenInputSectionProps) {
   return (
     <div className="space-y-4">
-      <CurrencySelector onSelectCurrency={onSelectCurrency} />
+      <CurrencySelector
+        onSelectCurrency={onSelectCurrency}
+        className="w-full"
+      />
       {/* Token State */}
       <div className="space-y-3">
         <div className="flex space-x-4">

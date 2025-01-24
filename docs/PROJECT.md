@@ -41,4 +41,7 @@
 - [x] 2024-07-11: Reordered tasks to prioritize UI-related tasks.
 - [x] 2024-07-12: Added tasks for designing the layout of the simulator page.
 - [x] 2024-07-13: Removed old CSS files and replaced with TailwindCSS classes.
+- [x] 2024-07-14: Updated `CurrencySelector` to match container width when opened using `Popover`.
+    - Modified `CurrencySelector` to accept and apply a `className` prop to `PopoverContent`.
+    - Updated `TokenInputSection` to pass `w-full` as `className` to `CurrencySelector`.
 - [ ] 2024-07-14: Added TODO list for implementing story 3: Clear page content after clearing address input.

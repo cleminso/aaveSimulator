@@ -37,9 +37,13 @@ const currencies = [
 
 interface CurrencySelectorProps {
   onSelectCurrency: (currency: string) => void;
+  className?: string; // Add className prop
 }
 
-export function CurrencySelector({ onSelectCurrency }: CurrencySelectorProps) {
+export function CurrencySelector({
+  onSelectCurrency,
+  className,
+}: CurrencySelectorProps) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
@@ -64,7 +68,7 @@ export function CurrencySelector({ onSelectCurrency }: CurrencySelectorProps) {
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-full p-0">
+      <PopoverContent className={cn("w-full p-0", className)}>
         <Command>
           <CommandInput placeholder="Search currency..." />
           <CommandList>
