@@ -50,4 +50,4 @@
 - [x] 2024-07-14: Added "Debt Token" label to `CurrencySelector` in `debt-section.tsx`.
     - Wrapped `TokenInputSection` in a `div` container.
     - Added a `Label` element with "Content-Large" typography styling (font-family: Roboto, font-weight: 500, font-size: 20px, line-height: 25px).
-- [ ] 2024-07-14: Added TODO list for implementing story 3: Clear page content after clearing address input.
+- [x] 2024-07-14: Updated `Popover` to accept a `className` prop.
