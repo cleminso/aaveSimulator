@@ -39,9 +39,7 @@ interface CurrencySelectorProps {
   onSelectCurrency: (currency: string) => void;
 }
 
-export function CurrencySelector({
-  onSelectCurrency,
-}: CurrencySelectorProps) {
+export function CurrencySelector({ onSelectCurrency }: CurrencySelectorProps) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
@@ -58,7 +56,7 @@ export function CurrencySelector({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className="w-full justify-between"
         >
           {value
             ? currencies.find((currency) => currency.value === value)?.label
@@ -66,7 +64,7 @@ export function CurrencySelector({
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
+      <PopoverContent className="w-[200] p-0">
         <Command>
           <CommandInput placeholder="Search currency..." />
           <CommandList>
