@@ -2,6 +2,8 @@ import Simulator from "./simulator-component";
 
 export function CollateralVsDebt() {
   return (
-    <Simulator />
+    <div className="mt-6">
+      <Simulator />
+    </div>
   );
 }
