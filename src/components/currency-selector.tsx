@@ -54,12 +54,8 @@ export function CurrencySelector({
   };
 
   return (
-    <Popover
-      open={open}
-      onOpenChange={setOpen}
-      className={cn("w-full", className)}
-    >
-      <PopoverTrigger asChild>
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild className={cn("w-full", className)}>
         <Button
           variant="outline"
           role="combobox"
