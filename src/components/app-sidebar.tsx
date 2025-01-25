@@ -1,10 +1,5 @@
 import * as React from "react";
-import {
-  AudioWaveform,
-  Command,
-  GalleryVerticalEnd,
-  SquareTerminal,
-} from "lucide-react";
+import { SquareTerminal } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { NavMain } from "@/components/nav-main";
