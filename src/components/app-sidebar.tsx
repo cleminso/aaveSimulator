@@ -6,8 +6,8 @@ import {
   SquareTerminal,
 } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
 import { NavMain } from "@/components/nav-main";
-import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
@@ -17,23 +17,6 @@ import {
 
 // This is sample data.
 const data = {
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
-  ],
   navMain: [
     {
       title: "Ethereum Mainnet",
@@ -144,7 +127,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        <Button
+          variant="ghost"
+          className="w-full justify-start font-normal text-[20px] leading-[25px] font-['Roboto'] truncate"
+        >
+          <span className="truncate">Aave Simulator</span>
+        </Button>
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
