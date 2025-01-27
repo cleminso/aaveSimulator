@@ -34,7 +34,7 @@ To integrate AAVE protocol logic inside our app, we need to use a subgraph. A su
 
 **Token risk parameters**:
 
-Display parameters and relations for each token available on Aave v3 Ethereum network, source: https://aave.com/docs/resources/parameters.
+Parameters and relations for each token available on Aave v3 Ethereum network, source: https://aave.com/docs/resources/parameters.
 
 |               Parameter |    WETH |  wstETH |    WBTC |    USDC |     DAI |    LINK |    AAVE |   cbETH |    USDT |    rETH |    LUSD |     CRV |     MKR |     SNX |     BAL |     UNI |     LDO |     ENS |   1INCH |    FRAX |     GHO |     RPL |    sDAI |     STG |     KNC |     FXS |  crvUSD |   PYUSD |   weETH |   osETH |    USDe |    ETHx |   sUSDe |    tBTC |   cbBTC |    USDS |   rsETH |
 |:------------------------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|:--------|
@@ -47,7 +47,7 @@ Display parameters and relations for each token available on Aave v3 Ethereum ne
 
 **Metrics Formula**:
 
-Display all metrics formula used inside the aave simulator.
+All metrics formula used inside the aave simulator.
 
 | **Metric**              | **Formula**                                                                 |
 |--------------------------|-----------------------------------------------------------------------------|
