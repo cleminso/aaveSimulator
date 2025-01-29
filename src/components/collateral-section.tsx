@@ -1,21 +1,24 @@
 import { useState } from "react";
 import { TokenInputSection } from "./token-input-section";
 import { Label } from "@/components/ui/label";
+import { useCollateralStore } from "@/store/collateral-store";
 
 export function CollateralSection() {
   const [tokenQuantity, setTokenQuantity] = useState(0);
   const [tokenPrice, setTokenPrice] = useState(1500);
-  const [usdValue, setUsdValue] = useState(0);
   const [selectedCurrency, setSelectedCurrency] = useState("WETH");
+  const setCollateralValue = useCollateralStore(
+    (state) => state.setCollateralValue,
+  );
 
   const handleTokenQuantityChange = (value: number) => {
     setTokenQuantity(value);
-    setUsdValue(value * tokenPrice);
+    setCollateralValue(value * tokenPrice);
   };
 
   const handleTokenPriceChange = (value: number) => {
     setTokenPrice(value);
-    setUsdValue(tokenQuantity * value);
+    setCollateralValue(tokenQuantity * value);
   };
 
   return (
@@ -31,7 +34,7 @@ export function CollateralSection() {
         onSelectCurrency={setSelectedCurrency}
         tokenQuantity={tokenQuantity}
         onTokenQuantityChange={handleTokenQuantityChange}
-        usdValue={usdValue}
+        collateralValue={useCollateralStore((state) => state.collateralValue)}
         tokenPrice={tokenPrice}
         onTokenPriceChange={handleTokenPriceChange}
       />

@@ -5,8 +5,11 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
+import { useCollateralStore } from "@/store/collateral-store";
+
 export function HealthFactorSummary() {
   const healthFactorValue = 1; // Placeholder value for development
+  const collateralValue = useCollateralStore((state) => state.collateralValue);
 
   const getTooltipTriggerBackgroundColor = (value: number) => {
     if (value <= 1.1) return "bg-error";
@@ -50,6 +53,10 @@ export function HealthFactorSummary() {
           </CardTitle>
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
             $
+            {collateralValue.toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
           </CardContent>
         </Card>
         <Card className="w-full md:w-1/3 h-[71px] bg-secondary">
