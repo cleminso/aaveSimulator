@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/tooltip";
 
 import { useCollateralStore } from "@/stores/collateral-store";
+import { useDebtStore } from "@/stores/debt-store";
 
 export function HealthFactorSummary() {
   const healthFactorValue = 1; // Placeholder value for development
@@ -65,6 +66,10 @@ export function HealthFactorSummary() {
           </CardTitle>
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
             $
+            {useDebtStore((state) => state.debtValue).toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
           </CardContent>
         </Card>
         <Card className="w-full md:w-1/3 h-[71px] bg-secondary">

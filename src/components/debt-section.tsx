@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { TokenInputSection } from "./token-input-section";
 import { Label } from "@/components/ui/label";
+import { useDebtStore } from "@/stores/debt-store";
 
 export function DebtSection() {
   const [tokenQuantity, setTokenQuantity] = useState(0);
@@ -8,14 +9,26 @@ export function DebtSection() {
   const [usdValue, setUsdValue] = useState(0);
   const [selectedCurrency, setSelectedCurrency] = useState("USDC");
 
+  const setDebtValue = useDebtStore((state) => state.setDebtValue);
+
   const handleTokenQuantityChange = (value: number) => {
     setTokenQuantity(value);
-    setUsdValue(value * tokenPrice);
+    const newValue = value * tokenPrice;
+    setUsdValue(newValue);
+    setDebtValue(newValue);
   };
 
   const handleTokenPriceChange = (value: number) => {
     setTokenPrice(value);
-    setUsdValue(tokenQuantity * value);
+    const newValue = tokenQuantity * value;
+    setUsdValue(newValue);
+    setDebtValue(newValue);
+  };
+
+  const handleUsdValueChange = (value: number) => {
+    setUsdValue(value);
+    // Update token quantity based on USD value while maintaining price
+    setTokenQuantity(value / tokenPrice);
   };
 
   return (
@@ -32,6 +45,7 @@ export function DebtSection() {
         tokenQuantity={tokenQuantity}
         onTokenQuantityChange={handleTokenQuantityChange}
         usdValue={usdValue}
+        onUsdValueChange={handleUsdValueChange}
         tokenPrice={tokenPrice}
         onTokenPriceChange={handleTokenPriceChange}
       />
