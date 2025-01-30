@@ -5,7 +5,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-import { useCollateralStore } from "@/store/collateral-store";
+import { useCollateralStore } from "@/stores/collateral-store";
 
 export function HealthFactorSummary() {
   const healthFactorValue = 1; // Placeholder value for development

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { TokenInputSection } from "./token-input-section";
 import { Label } from "@/components/ui/label";
-import { useCollateralStore } from "@/store/collateral-store";
+import { useCollateralStore } from "@/stores/collateral-store";
 
 export function CollateralSection() {
   const [tokenQuantity, setTokenQuantity] = useState(0);

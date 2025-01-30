@@ -14,13 +14,14 @@
 	- Destructive actions such as cancel, delete, etc… should always be to the right
 5. Everything should be written using TypeScript and strict typing policies
 6. We use ShadCN library exclusively to provide front-end components
-7. We use TailwindCSS library exclusively to provide CSS facilities
-8. We use Vite to bundle and run the app
-9. Build every component on top of ShadCN components and ONLY ShadCN components
+7. Make sure every components are wrapped with a <div/>
+8. We use TailwindCSS library exclusively to provide CSS facilities
+9. We use Vite to bundle and run the app
+10. Build every component on top of ShadCN components and ONLY ShadCN components
 	1. Make sure to compose on top of it and not modify the components directly
-10. We are building an app that should load quickly, and work on every browser, as well as browsers on mobile phones and tablets
-11. Do not ask for confirmation or any suggestion, follow the request precisely
-12. Maintain the todo list before starting work, break each down into tasks, and after every update and maintain a changelog at the bottom of the file, in a journaling style
-13. Think carefully before doing, but be mindful of how much you think, don't over-think
-14. Create 3-step numbered plans before coding
-15. Display current plan step clearly
+11. We are building an app that should load quickly, and work on every browser, as well as browsers on mobile phones and tablets
+12. Do not ask for confirmation or any suggestion, follow the request precisely
+13. Maintain the todo list before starting work, break each down into tasks, and after every update and maintain a changelog at the bottom of the file, in a journaling style
+14. Think carefully before doing, but be mindful of how much you think, don't over-think
+15. Create 3-step numbered plans before coding
+16. Display current plan step clearly
