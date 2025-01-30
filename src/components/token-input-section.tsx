@@ -44,7 +44,11 @@ export function TokenInputSection({
           </div>
           <div className="w-1/3 space-y-1">
             <Label>USD Value</Label>
-            <Input type="number" value={usdValue ?? collateralValue} disabled />
+            <Input
+              type="number"
+              value={usdValue !== undefined ? usdValue : collateralValue}
+              disabled
+            />
           </div>
         </div>
         <Slider
