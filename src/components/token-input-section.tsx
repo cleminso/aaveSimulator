@@ -8,7 +8,8 @@ interface TokenInputSectionProps {
   onSelectCurrency: (currency: string) => void;
   tokenQuantity: number;
   onTokenQuantityChange: (value: number) => void;
-  collateralValue: number;
+  collateralValue?: number;
+  usdValue?: number;
   tokenPrice: number;
   onTokenPriceChange: (value: number) => void;
 }
@@ -19,6 +20,7 @@ export function TokenInputSection({
   tokenQuantity,
   onTokenQuantityChange,
   collateralValue,
+  usdValue,
   tokenPrice,
   onTokenPriceChange,
 }: TokenInputSectionProps) {
@@ -42,7 +44,7 @@ export function TokenInputSection({
           </div>
           <div className="w-1/3 space-y-1">
             <Label>USD Value</Label>
-            <Input type="number" value={collateralValue} disabled />
+            <Input type="number" value={usdValue ?? collateralValue} disabled />
           </div>
         </div>
         <Slider
