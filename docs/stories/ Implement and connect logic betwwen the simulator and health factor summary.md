@@ -38,3 +38,7 @@
 - Each values should be displayed as text inside the 'CardContent' before the $
 - The values from 'HealthFactor section' should be updated each time a parameter from 'Simulator component' changes
 - The web application preview should run without errors at the end of the story implementation
+
+system need to be conscient to the threshold per currenry -> need to store a value
+convert aave-parameter.json to a store module (need to be independant from the selected protocol -> behavior: describe when user select a protocol, we need to load this one and not another one
+ask Le Chat "I have a react project, with this json file, what would you do with it"
