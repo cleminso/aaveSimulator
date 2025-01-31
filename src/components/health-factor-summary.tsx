@@ -5,12 +5,11 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-import { useCollateralStore } from "@/stores/collateral-store";
-import { useDebtStore } from "@/stores/debt-store";
+import { usePositionStore } from "@/stores/position-store";
 
 export function HealthFactorSummary() {
   const healthFactorValue = 1; // Placeholder value for development
-  const collateralValue = useCollateralStore((state) => state.collateralValue);
+  const { collateral, debt } = usePositionStore();
 
   const getTooltipTriggerBackgroundColor = (value: number) => {
     if (value <= 1.1) return "bg-error";
@@ -54,7 +53,7 @@ export function HealthFactorSummary() {
           </CardTitle>
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
             $
-            {collateralValue.toLocaleString("en-US", {
+            {collateral.positionValue.toLocaleString("en-US", {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}
@@ -66,7 +65,7 @@ export function HealthFactorSummary() {
           </CardTitle>
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
             $
-            {useDebtStore((state) => state.debtValue).toLocaleString("en-US", {
+            {debt.positionValue.toLocaleString("en-US", {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}
