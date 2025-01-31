@@ -7,12 +7,12 @@ export function DebtSection() {
   const [tokenQuantity, setTokenQuantity] = useState(0);
   const [tokenPrice, setTokenPrice] = useState(1500);
   const [selectedCurrency, setSelectedCurrency] = useState("USDC");
-  const debtStore = usePositionStore("debt");
+  const { debt } = usePositionStore();
 
   const handleTokenQuantityChange = (value: number) => {
     setTokenQuantity(value);
     const newValue = value * tokenPrice;
-    debtStore.setPositionValue(newValue);
+    debt.setPositionValue(newValue);
   };
 
   const handleTokenPriceChange = (value: number) => {
@@ -34,7 +34,7 @@ export function DebtSection() {
         onSelectCurrency={setSelectedCurrency}
         tokenQuantity={tokenQuantity}
         onTokenQuantityChange={handleTokenQuantityChange}
-        usdValue={debtStore.positionValue}
+        usdValue={debt.positionValue}
         collateralValue={0}
         tokenPrice={tokenPrice}
         onTokenPriceChange={handleTokenPriceChange}
