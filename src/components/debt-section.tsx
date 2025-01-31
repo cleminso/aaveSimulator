@@ -1,24 +1,24 @@
 import { useState } from "react";
 import { TokenInputSection } from "./token-input-section";
 import { Label } from "@/components/ui/label";
-import { useDebtStore } from "@/stores/debt-store";
+import { usePositionStore } from "@/stores/position-store";
 
 export function DebtSection() {
   const [tokenQuantity, setTokenQuantity] = useState(0);
   const [tokenPrice, setTokenPrice] = useState(1500);
   const [selectedCurrency, setSelectedCurrency] = useState("USDC");
-  const setDebtValue = useDebtStore((state) => state.setDebtValue);
+  const debtStore = usePositionStore("debt");
 
   const handleTokenQuantityChange = (value: number) => {
     setTokenQuantity(value);
     const newValue = value * tokenPrice;
-    setDebtValue(newValue);
+    debtStore.setPositionValue(newValue);
   };
 
   const handleTokenPriceChange = (value: number) => {
     setTokenPrice(value);
     const newValue = tokenQuantity * value;
-    setDebtValue(newValue);
+    debtStore.setPositionValue(newValue);
   };
 
   return (
@@ -34,7 +34,7 @@ export function DebtSection() {
         onSelectCurrency={setSelectedCurrency}
         tokenQuantity={tokenQuantity}
         onTokenQuantityChange={handleTokenQuantityChange}
-        usdValue={useDebtStore((state) => state.debtValue)}
+        usdValue={debtStore.positionValue}
         collateralValue={0}
         tokenPrice={tokenPrice}
         onTokenPriceChange={handleTokenPriceChange}
