@@ -31,8 +31,8 @@ read:
   - "docs/STACK.md"
   # - "docs/v3.schema.graphql"
 
-file:
-  - "docs/PROJECT.md"
+# file:
+# - "docs/PROJECT.md"
 
 architect: true
 cache-prompts: true
