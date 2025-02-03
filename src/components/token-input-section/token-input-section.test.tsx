@@ -104,7 +104,7 @@ describe("TokenInputSection", () => {
       await user.click(currencySelectorButton);
 
       // Wait for the "DAI" currency item to appear in the popover content
-      const daiCurrencyItem = await screen.findByText("DAI");
+      const daiCurrencyItem = await screen.findByRole('option', {name: 'DAI'});
       expect(daiCurrencyItem).toBeInTheDocument();
 
       // Click the "DAI" currency item
