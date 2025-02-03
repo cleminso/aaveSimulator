@@ -61,6 +61,7 @@ export function CurrencySelector({
           role="combobox"
           aria-expanded={open}
           className="w-full justify-between"
+          data-testid="currency-selector"
         >
           {value
             ? currencies.find((currency) => currency.value === value)?.label
