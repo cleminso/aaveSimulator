@@ -3,6 +3,24 @@ import { TokenInputSection } from "./token-input-section";
 import { describe, it, expect, vi } from "vitest";
 
 describe("TokenInputSection", () => {
+  it("syncs usdValue to collateralValue card", () => {
+    const mockOnTokenQuantityChange = vi.fn();
+    const mockOnTokenPriceChange = vi.fn();
+    const initialTokenPrice = 1500;
+
+    render(
+      <TokenInputSection
+        currency="WETH"
+        onSelectCurrency={() => {}}
+        tokenQuantity={0}
+        onTokenQuantityChange={mockOnTokenQuantityChange}
+        tokenPrice={initialTokenPrice}
+        onTokenPriceChange={mockOnTokenPriceChange}
+      />,
+    );
+
+  });
+
   it("syncs usdValue to calculated collateralValue based on tokenQuantity and tokenPrice", () => {
     const mockOnTokenQuantityChange = vi.fn();
     const mockOnTokenPriceChange = vi.fn();
