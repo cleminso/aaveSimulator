@@ -1,6 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-// userEvent import removed
 import { describe, it, expect, vi } from "vitest";
 import { TokenInputSection } from "./token-input-section";
 import "@testing-library/jest-dom";
@@ -25,7 +24,6 @@ describe("TokenInputSection", () => {
   });
 
   it("handles token quantity changes", async () => {
-    // userEvent removed
     const onTokenQuantityChange = vi.fn();
 
     render(
@@ -49,7 +47,6 @@ describe("TokenInputSection", () => {
   });
 
   it("handles token price changes", async () => {
-    // userEvent removed
     const onTokenPriceChange = vi.fn();
 
     render(
@@ -96,12 +93,19 @@ describe("TokenInputSection", () => {
       />,
     );
 
-    // Try to find the currency selector using multiple strategies
-    const currencySelector = screen.getByTestId("currency-selector");
-    expect(currencySelector).toBeInTheDocument();
-    expect(currencySelector).toHaveTextContent("ETH");
+    // Find the PopoverTrigger (button) using the data-testid
+    const currencySelectorButton = screen.getByTestId("currency-selector");
+    expect(currencySelectorButton).toBeInTheDocument();
 
-    await user.click(currencySelector);
-    expect(onSelectCurrency).toHaveBeenCalledTimes(1);
+    // Click the button to open the popover
+    await user.click(currencySelectorButton);
+
+    // Find the "DAI" currency item in the popover content and click it
+    const daiCurrencyItem = screen.getByText("DAI");
+    expect(daiCurrencyItem).toBeInTheDocument();
+    await user.click(daiCurrencyItem);
+
+    // Verify that onSelectCurrency was called with "DAI"
+    expect(onSelectCurrency).toHaveBeenCalledWith("DAI");
   });
 });

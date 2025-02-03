@@ -29,6 +29,7 @@ export function TokenInputSection({
       <CurrencySelector
         onSelectCurrency={onSelectCurrency}
         className="w-full"
+        data-testid="currency-selector" // Add data-testid here
       />
       {/* Token State */}
       <div className="space-y-3">
