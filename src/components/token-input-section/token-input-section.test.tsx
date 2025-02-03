@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { render, screen, fireEvent } from "@testing-library/react";
+// userEvent import removed
 import { describe, it, expect, vi } from "vitest";
 import { TokenInputSection } from "./token-input-section";
 import "@testing-library/jest-dom";
@@ -24,10 +24,10 @@ describe("TokenInputSection", () => {
   });
 
   it("handles token quantity changes", async () => {
-    const user = userEvent.setup();
+    // userEvent removed
     const onTokenQuantityChange = vi.fn();
 
-    const { container } = render(
+    render(
       <TokenInputSection
         {...defaultProps}
         onTokenQuantityChange={onTokenQuantityChange}
@@ -41,21 +41,17 @@ describe("TokenInputSection", () => {
     ) as HTMLInputElement;
     expect(input).toBeInTheDocument();
 
-    await user.clear(input);
-    // Create a change event with the new value
-    const changeEvent = new Event("change", { bubbles: true });
-    Object.defineProperty(changeEvent, "target", { value: { value: "2.5" } });
+    // Directly set the value and dispatch the change event
+    fireEvent.change(input, { target: { value: "2.5" } });
 
-    input.value = "2.5";
-    input.dispatchEvent(changeEvent);
     expect(onTokenQuantityChange).toHaveBeenCalledWith(2.5);
   });
 
   it("handles token price changes", async () => {
-    const user = userEvent.setup();
+    // userEvent removed
     const onTokenPriceChange = vi.fn();
 
-    const { container } = render(
+    render(
       <TokenInputSection
         {...defaultProps}
         onTokenPriceChange={onTokenPriceChange}
@@ -69,13 +65,9 @@ describe("TokenInputSection", () => {
     ) as HTMLInputElement;
     expect(input).toBeInTheDocument();
 
-    await user.clear(input);
-    // Create a change event with the new value
-    const changeEvent = new Event("change", { bubbles: true });
-    Object.defineProperty(changeEvent, "target", { value: { value: "2500" } });
+    // Directly set the value and dispatch the change event
+    fireEvent.change(input, { target: { value: "2500" } });
 
-    input.value = "2500";
-    input.dispatchEvent(changeEvent);
     expect(onTokenPriceChange).toHaveBeenCalledWith(2500);
   });
 
