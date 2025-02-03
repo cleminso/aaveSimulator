@@ -3,7 +3,9 @@ import { Slider } from "@/components/ui/slider";
 import { CurrencySelector } from "../currency-selector";
 import { Label } from "@/components/ui/label";
 
-interface TokenInputSectionProps {
+import { type } from "os";
+
+export type TokenInputSectionProps = {
   currency: string;
   onSelectCurrency: (currency: string) => void;
   tokenQuantity: number;
@@ -12,7 +14,7 @@ interface TokenInputSectionProps {
   usdValue?: number;
   tokenPrice: number;
   onTokenPriceChange: (value: number) => void;
-}
+};
 
 export function TokenInputSection({
   currency,
@@ -35,17 +37,22 @@ export function TokenInputSection({
       <div className="space-y-3">
         <div className="flex space-x-4">
           <div className="w-2/3 space-y-1">
-            <Label>{`${currency} Quantity`}</Label>
+            <Label htmlFor="token-quantity">{`${currency} Quantity`}</Label>
             <Input
+              id="token-quantity"
               type="number"
               value={tokenQuantity}
-              onChange={(e) => onTokenQuantityChange(Number(e.target.value))}
-              placeholder={`Enter ${currency} Quantity`}
+              onChange={(e) => {
+                const value = Number(e.target.value);
+                if (value < 0) return;
+                onTokenQuantityChange(Number(value.toFixed(8)));
+              }}
             />
           </div>
           <div className="w-1/3 space-y-1">
-            <Label>USD Value</Label>
+            <Label htmlFor="usd-value">USD Value</Label>
             <Input
+              id="usd-value"
               type="number"
               value={usdValue !== undefined ? usdValue : collateralValue}
               disabled
@@ -63,8 +70,9 @@ export function TokenInputSection({
       <div className="space-y-3">
         <div className="flex space-x-4">
           <div className="w-full space-y-1">
-            <Label>{`${currency} Price (USD)`}</Label>
+            <Label htmlFor="token-price">{`${currency} Price (USD)`}</Label>
             <Input
+              id="token-price"
               type="number"
               value={tokenPrice}
               onChange={(e) => onTokenPriceChange(Number(e.target.value))}
