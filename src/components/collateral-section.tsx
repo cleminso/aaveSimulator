@@ -7,11 +7,14 @@ export function CollateralSection() {
   const [tokenQuantity, setTokenQuantity] = useState(0);
   const [tokenPrice, setTokenPrice] = useState(1500);
   const [selectedCurrency, setSelectedCurrency] = useState("WETH");
+  const [usdValue, setUsdValue] = useState(0);
   const { collateral } = usePositionStore();
 
   const handleTokenQuantityChange = (value: number) => {
     setTokenQuantity(value);
-    collateral.setPositionValue(value * tokenPrice);
+    const calculatedUsdValue = value * tokenPrice;
+    setUsdValue(calculatedUsdValue);
+    collateral.setPositionValue(calculatedUsdValue);
   };
 
   const handleTokenPriceChange = (value: number) => {
@@ -34,6 +37,7 @@ export function CollateralSection() {
         onTokenQuantityChange={handleTokenQuantityChange}
         collateralValue={collateral.positionValue}
         tokenPrice={tokenPrice}
+        usdValue={usdValue}
         onTokenPriceChange={handleTokenPriceChange}
       />
     </div>
