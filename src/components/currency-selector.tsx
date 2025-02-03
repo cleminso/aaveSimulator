@@ -32,7 +32,10 @@ const currencies = [
     value: "USDC",
     label: "USDC",
   },
-  // Add more currencies here
+  {
+    value: "DAI",
+    label: "DAI",
+  },
 ];
 
 interface CurrencySelectorProps {

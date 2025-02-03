@@ -94,26 +94,24 @@ describe("TokenInputSection", () => {
     );
 
     // Use findByTestId to wait for the button to appear
-    const currencySelectorButton = await screen.findByTestId(
-      "currency-selector",
-    );
+    const currencySelectorButton =
+      await screen.findByTestId("currency-selector");
 
     // Click the button to open the popover
     await user.click(currencySelectorButton);
 
     // Wait for the "DAI" currency item to appear in the popover content
     await waitFor(async () => {
-      const daiCurrencyItem = await screen.findByRole('option', {name: 'DAI'});
+      const daiCurrencyItem = await screen.findByRole("option", {
+        name: "DAI",
+      });
       expect(daiCurrencyItem).toBeInTheDocument();
 
       // Click the "DAI" currency item
       await user.click(daiCurrencyItem);
 
       // Verify that onSelectCurrency was called with "DAI"
-      expect(onSelectCurrency).toHaveBeenCalledWith("DAI")
-    }, {
-      timeout: 5000, // Optional timeout to avoid indefinite waiting
-      interval: 50, // Optional interval to check more frequently
+      expect(onSelectCurrency).toHaveBeenCalledWith("DAI");
     });
   });
 });
