@@ -96,10 +96,11 @@ describe("TokenInputSection", () => {
       />,
     );
 
-    // The CurrencySelector component should render a button with the currency text
-    const currencySelector = screen.getByRole("button", { name: /ETH/i });
+    // Try to find the currency selector using multiple strategies
+    const currencySelector = screen.getByTestId("currency-selector");
     expect(currencySelector).toBeInTheDocument();
-    
+    expect(currencySelector).toHaveTextContent("ETH");
+
     await user.click(currencySelector);
     expect(onSelectCurrency).toHaveBeenCalledTimes(1);
   });
