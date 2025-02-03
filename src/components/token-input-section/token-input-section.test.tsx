@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 // userEvent import removed
 import { describe, it, expect, vi } from "vitest";
 import { TokenInputSection } from "./token-input-section";
@@ -85,8 +86,8 @@ describe("TokenInputSection", () => {
   });
 
   it("updates currency selector", async () => {
-    const user = userEvent.setup();
     const onSelectCurrency = vi.fn();
+    const user = userEvent.setup();
 
     render(
       <TokenInputSection
@@ -95,10 +96,11 @@ describe("TokenInputSection", () => {
       />,
     );
 
-    // The CurrencySelector component should render a button
-    const currencySelector = screen.getByRole("button");
+    // The CurrencySelector component should render a button with the currency text
+    const currencySelector = screen.getByRole("button", { name: /ETH/i });
+    expect(currencySelector).toBeInTheDocument();
+    
     await user.click(currencySelector);
-
-    expect(onSelectCurrency).toHaveBeenCalled();
+    expect(onSelectCurrency).toHaveBeenCalledTimes(1);
   });
 });
