@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, it, expect, vi } from "vitest";
 import { TokenInputSection } from "./token-input-section";
@@ -93,19 +93,28 @@ describe("TokenInputSection", () => {
       />,
     );
 
-    // Find the PopoverTrigger (button) using the data-testid
-    const currencySelectorButton = screen.getByTestId("currency-selector");
-    expect(currencySelectorButton).toBeInTheDocument();
+    // Use findByTestId to wait for the button to appear
+    const currencySelectorButton = await screen.findByTestId(
+      "currency-selector",
+    );
 
-    // Click the button to open the popover
-    await user.click(currencySelectorButton);
+    // Check if the button is rendered before clicking
+    if (currencySelectorButton) {
+      // Click the button to open the popover
+      await user.click(currencySelectorButton);
 
-    // Find the "DAI" currency item in the popover content and click it
-    const daiCurrencyItem = screen.getByText("DAI");
-    expect(daiCurrencyItem).toBeInTheDocument();
-    await user.click(daiCurrencyItem);
+      // Wait for the "DAI" currency item to appear in the popover content
+      const daiCurrencyItem = await screen.findByText("DAI");
+      expect(daiCurrencyItem).toBeInTheDocument();
 
-    // Verify that onSelectCurrency was called with "DAI"
-    expect(onSelectCurrency).toHaveBeenCalledWith("DAI");
+      // Click the "DAI" currency item
+      await user.click(daiCurrencyItem);
+
+      // Verify that onSelectCurrency was called with "DAI"
+      expect(onSelectCurrency).toHaveBeenCalledWith("DAI");
+    } else {
+      // Fail the test if the button is not found
+      expect(currencySelectorButton).toBeInTheDocument();
+    }
   });
 });
