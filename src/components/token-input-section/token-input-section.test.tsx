@@ -98,12 +98,11 @@ describe("TokenInputSection", () => {
       "currency-selector",
     );
 
-    // Check if the button is rendered before clicking
-    if (currencySelectorButton) {
-      // Click the button to open the popover
-      await user.click(currencySelectorButton);
+    // Click the button to open the popover
+    await user.click(currencySelectorButton);
 
-      // Wait for the "DAI" currency item to appear in the popover content
+    // Wait for the "DAI" currency item to appear in the popover content
+    await waitFor(async () => {
       const daiCurrencyItem = await screen.findByRole('option', {name: 'DAI'});
       expect(daiCurrencyItem).toBeInTheDocument();
 
@@ -111,10 +110,10 @@ describe("TokenInputSection", () => {
       await user.click(daiCurrencyItem);
 
       // Verify that onSelectCurrency was called with "DAI"
-      expect(onSelectCurrency).toHaveBeenCalledWith("DAI");
-    } else {
-      // Fail the test if the button is not found
-      expect(currencySelectorButton).toBeInTheDocument();
-    }
+      expect(onSelectCurrency).toHaveBeenCalledWith("DAI")
+    }, {
+      timeout: 5000, // Optional timeout to avoid indefinite waiting
+      interval: 50, // Optional interval to check more frequently
+    });
   });
 });
