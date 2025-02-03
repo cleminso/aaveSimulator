@@ -25,4 +25,3 @@
 14. Think carefully before doing, but be mindful of how much you think, don't over-think
 15. Create 3-step numbered plans before coding
 16. Display current plan step clearly
-17. Maintain the test todo list inside `test-todo.md` each time we implement a component testing.
