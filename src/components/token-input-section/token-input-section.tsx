@@ -3,9 +3,7 @@ import { Slider } from "@/components/ui/slider";
 import { CurrencySelector } from "../currency-selector";
 import { Label } from "@/components/ui/label";
 
-import { type } from "os";
-
-export type TokenInputSectionProps = {
+export interface TokenInputSectionProps {
   currency: string;
   onSelectCurrency: (currency: string) => void;
   tokenQuantity: number;
@@ -14,7 +12,7 @@ export type TokenInputSectionProps = {
   usdValue?: number;
   tokenPrice: number;
   onTokenPriceChange: (value: number) => void;
-};
+}
 
 export function TokenInputSection({
   currency,
@@ -31,9 +29,8 @@ export function TokenInputSection({
       <CurrencySelector
         onSelectCurrency={onSelectCurrency}
         className="w-full"
-        data-testid="currency-selector" // Add data-testid here
+        data-testid="currency-selector"
       />
-      {/* Token State */}
       <div className="space-y-3">
         <div className="flex space-x-4">
           <div className="w-2/3 space-y-1">
@@ -66,7 +63,6 @@ export function TokenInputSection({
           onValueChange={(value) => onTokenQuantityChange(value[0])}
         />
       </div>
-      {/* Token Simulation */}
       <div className="space-y-3">
         <div className="flex space-x-4">
           <div className="w-full space-y-1">
