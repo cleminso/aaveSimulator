@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TokenInputSection } from "./token-input-section";
+import { TokenInputSection } from "./token-input-section/token-input-section";
 import { Label } from "@/components/ui/label";
 import { usePositionStore } from "@/stores/position-store";
 
@@ -18,7 +18,7 @@ export function DebtSection() {
   const handleTokenPriceChange = (value: number) => {
     setTokenPrice(value);
     const newValue = tokenQuantity * value;
-    debtStore.setPositionValue(newValue);
+    debt.setPositionValue(newValue);
   };
 
   return (
