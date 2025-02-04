@@ -49,12 +49,12 @@ Parameters and relations for each token available on Aave v3 Ethereum network, s
 
 All metrics formula used inside the aave simulator.
 
-| **Metric**              | **Formula**                                                                 |
-|--------------------------|-----------------------------------------------------------------------------|
-| Collateral Value         | `Σ (Collateral Amount of Asset × Price of Asset)`                          |
-| Liquidation Threshold    | `Σ (Collateral Amount of Asset × Price of Asset × Liquidation Threshold)`  |
-| Total Borrowed           | `Σ (Borrowed Amount of Asset × Price of Asset)`                            |
-| Current LTV              | `(Total Borrowed / Collateral Value) × 100`                                |
-| Available to Borrow      | `(Collateral Value × Max LTV) - Total Borrowed`                            |
-| Borrowing Capacity       | `(Available to Borrow / (Collateral Value × Max LTV)) × 100`               |
-| Health Factor            | `(Collateral Value × Liquidation Threshold) / Total Borrowed`              |
+| **Metric**                    | **Formula**                                                                 |
+|-------------------------------|-----------------------------------------------------------------------------|
+| Collateral Value              | `Σ (Collateral Amount of Asset × Price of Asset)`                           |
+| Liquidation Threshold Price   | `(Total Borrowed / (Total Collateral Amount * Liquidation Threshold))       |
+| Total Borrowed                | `Σ (Borrowed Amount of Asset × Price of Asset)`                             |
+| Current LTV                   | `(Total Borrowed / Collateral Value) × 100`                                 |
+| Available to Borrow           | `(Collateral Value × Max LTV) - Total Borrowed`                             |
+| Borrowing Capacity            | `(Available to Borrow / (Collateral Value × Max LTV)) × 100`                |
+| Health Factor                 | `(Collateral Value × Liquidation Threshold) / Total Borrowed`               |
