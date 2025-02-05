@@ -39,6 +39,7 @@ export function CollateralSection() {
         tokenPrice={tokenPrice}
         usdValue={usdValue}
         onTokenPriceChange={handleTokenPriceChange}
+        mode="collateral" // ADD THIS LINE
       />
     </div>
   );
