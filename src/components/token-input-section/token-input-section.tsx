@@ -30,6 +30,7 @@ export function TokenInputSection({
         onSelectCurrency={onSelectCurrency}
         className="w-full"
         data-testid="currency-selector"
+        mode="collateral"
       />
       <div className="space-y-3">
         <div className="flex space-x-4">
