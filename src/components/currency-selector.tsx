@@ -19,34 +19,21 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-const currencies = [
-  {
-    value: "WETH",
-    label: "WETH",
-  },
-  {
-    value: "WBTC",
-    label: "WBTC",
-  },
-  {
-    value: "USDC",
-    label: "USDC",
-  },
-  {
-    value: "DAI",
-    label: "DAI",
-  },
-];
+import type { Currency, CurrencyMode } from "@/libs/currency";
+import { getFilteredCurrencies } from "@/libs/currency";
 
 interface CurrencySelectorProps {
   onSelectCurrency: (currency: string) => void;
-  className?: string; // Add className prop
+  className?: string;
+  mode: CurrencyMode;
 }
 
 export function CurrencySelector({
   onSelectCurrency,
   className,
+  mode,
 }: CurrencySelectorProps) {
+  const currencies = React.useMemo(() => getFilteredCurrencies(mode), [mode]);
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 

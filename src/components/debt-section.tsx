@@ -30,6 +30,7 @@ export function DebtSection() {
         Debt Token
       </Label>
       <TokenInputSection
+        mode="debt"
         currency={selectedCurrency}
         onSelectCurrency={setSelectedCurrency}
         tokenQuantity={tokenQuantity}

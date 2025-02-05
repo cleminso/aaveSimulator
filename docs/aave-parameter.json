@@ -6,16 +6,16 @@
       "Borrowing Enabled": true,
       "LTV": "80.5%",
       "Liquidation Threshold": "83%",
-       "Optimal Utilization": "90%",
+      "Optimal Utilization": "90%",
       "Variable Borrow Rate": "2.60%"
     },
     {
       "name": "wstETH",
-       "Collateral Enabled": true,
+      "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "78.5%",
       "Liquidation Threshold": "81%",
-        "Optimal Utilization": "80%",
+      "Optimal Utilization": "80%",
       "Variable Borrow Rate": "0.65%"
     },
     {
@@ -24,16 +24,16 @@
       "Borrowing Enabled": true,
       "LTV": "73%",
       "Liquidation Threshold": "78%",
-         "Optimal Utilization": "80%",
+      "Optimal Utilization": "80%",
       "Variable Borrow Rate": "0.42%"
     },
     {
       "name": "USDC",
-       "Collateral Enabled": true,
+      "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "75%",
       "Liquidation Threshold": "78%",
-       "Optimal Utilization": "92%",
+      "Optimal Utilization": "92%",
       "Variable Borrow Rate": "12.49%"
     },
     {
@@ -42,12 +42,12 @@
       "Borrowing Enabled": true,
       "LTV": "63%",
       "Liquidation Threshold": "77%",
-        "Optimal Utilization": "92%",
+      "Optimal Utilization": "92%",
       "Variable Borrow Rate": "11.61%"
     },
     {
       "name": "LINK",
-       "Collateral Enabled": true,
+      "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "66%",
       "Liquidation Threshold": "71%",
@@ -56,11 +56,11 @@
     },
     {
       "name": "AAVE",
-       "Collateral Enabled": true,
+      "Collateral Enabled": true,
       "Borrowing Enabled": false,
       "LTV": "66%",
       "Liquidation Threshold": "73%",
-     "Optimal Utilization": "45%",
+      "Optimal Utilization": "45%",
       "Variable Borrow Rate": "0.00%"
     },
     {
@@ -69,16 +69,16 @@
       "Borrowing Enabled": true,
       "LTV": "75%",
       "Liquidation Threshold": "79%",
-     "Optimal Utilization": "45%",
+      "Optimal Utilization": "45%",
       "Variable Borrow Rate": "2.07%"
     },
     {
       "name": "USDT",
-       "Collateral Enabled": true,
+      "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "75%",
       "Liquidation Threshold": "78%",
-         "Optimal Utilization": "92%",
+      "Optimal Utilization": "92%",
       "Variable Borrow Rate": "10.31%"
     },
     {
@@ -87,25 +87,25 @@
       "Borrowing Enabled": true,
       "LTV": "75%",
       "Liquidation Threshold": "79%",
-        "Optimal Utilization": "45%",
+      "Optimal Utilization": "45%",
       "Variable Borrow Rate": "0.36%"
     },
     {
       "name": "LUSD",
-       "Collateral Enabled": false,
+      "Collateral Enabled": false,
       "Borrowing Enabled": true,
       "LTV": "0%",
       "Liquidation Threshold": "77%",
-     "Optimal Utilization": "80%",
+      "Optimal Utilization": "80%",
       "Variable Borrow Rate": "15.27%"
     },
     {
       "name": "CRV",
-       "Collateral Enabled": true,
+      "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "35%",
       "Liquidation Threshold": "41%",
-        "Optimal Utilization": "70%",
+      "Optimal Utilization": "70%",
       "Variable Borrow Rate": "13.21%"
     },
     {
@@ -114,16 +114,16 @@
       "Borrowing Enabled": true,
       "LTV": "65%",
       "Liquidation Threshold": "70%",
-         "Optimal Utilization": "45%",
+      "Optimal Utilization": "45%",
       "Variable Borrow Rate": "0.22%"
     },
     {
       "name": "SNX",
-       "Collateral Enabled": true,
+      "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "49%",
       "Liquidation Threshold": "65%",
-        "Optimal Utilization": "80%",
+      "Optimal Utilization": "80%",
       "Variable Borrow Rate": "3.60%"
     },
     {
@@ -132,7 +132,7 @@
       "Borrowing Enabled": true,
       "LTV": "57%",
       "Liquidation Threshold": "59%",
-        "Optimal Utilization": "80%",
+      "Optimal Utilization": "80%",
       "Variable Borrow Rate": "5.79%"
     },
     {
@@ -141,197 +141,197 @@
       "Borrowing Enabled": true,
       "LTV": "65%",
       "Liquidation Threshold": "74%",
-         "Optimal Utilization": "45%",
+      "Optimal Utilization": "45%",
       "Variable Borrow Rate": "0.39%"
     },
-     {
+    {
       "name": "LDO",
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "40%",
       "Liquidation Threshold": "50%",
-        "Optimal Utilization": "45%",
+      "Optimal Utilization": "45%",
       "Variable Borrow Rate": "0.26%"
     },
     {
       "name": "ENS",
-       "Collateral Enabled": true,
+      "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "39%",
       "Liquidation Threshold": "49%",
-        "Optimal Utilization": "45%",
+      "Optimal Utilization": "45%",
       "Variable Borrow Rate": "0.53%"
     },
-      {
+    {
       "name": "1INCH",
-       "Collateral Enabled": true,
+      "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "57%",
       "Liquidation Threshold": "67%",
-         "Optimal Utilization": "45%",
+      "Optimal Utilization": "45%",
       "Variable Borrow Rate": "4.95%"
     },
     {
       "name": "FRAX",
-       "Collateral Enabled": false,
+      "Collateral Enabled": false,
       "Borrowing Enabled": true,
       "LTV": "0%",
-       "Liquidation Threshold": "72%",
-     "Optimal Utilization": "90%",
+      "Liquidation Threshold": "72%",
+      "Optimal Utilization": "90%",
       "Variable Borrow Rate": "11.73%"
     },
-      {
-        "name":"GHO",
-        "Collateral Enabled": false,
-        "Borrowing Enabled": true,
-        "LTV":"0%",
-        "Liquidation Threshold":"0%",
-        "Optimal Utilization":"99%",
-        "Variable Borrow Rate":"9.42%"
+    {
+      "name": "GHO",
+      "Collateral Enabled": false,
+      "Borrowing Enabled": true,
+      "LTV": "0%",
+      "Liquidation Threshold": "0%",
+      "Optimal Utilization": "99%",
+      "Variable Borrow Rate": "9.42%"
     },
     {
-        "name":"RPL",
-        "Collateral Enabled": false,
-        "Borrowing Enabled": true,
-         "LTV":"0%",
-        "Liquidation Threshold":"0%",
-        "Optimal Utilization":"80%",
-        "Variable Borrow Rate":"3.99%"
+      "name": "RPL",
+      "Collateral Enabled": false,
+      "Borrowing Enabled": true,
+      "LTV": "0%",
+      "Liquidation Threshold": "0%",
+      "Optimal Utilization": "80%",
+      "Variable Borrow Rate": "3.99%"
     },
-     {
-      "name":"sDAI",
-        "Collateral Enabled": true,
-        "Borrowing Enabled": false,
-        "LTV":"75%",
-        "Liquidation Threshold":"78%",
-         "Optimal Utilization":"90%",
-       "Variable Borrow Rate":"0.00%"
+    {
+      "name": "sDAI",
+      "Collateral Enabled": true,
+      "Borrowing Enabled": false,
+      "LTV": "75%",
+      "Liquidation Threshold": "78%",
+      "Optimal Utilization": "90%",
+      "Variable Borrow Rate": "0.00%"
     },
     {
       "name": "STG",
-        "Collateral Enabled": false,
-        "Borrowing Enabled": true,
-        "LTV":"0%",
-        "Liquidation Threshold":"37%",
-         "Optimal Utilization":"45%",
-         "Variable Borrow Rate":"0.33%"
-    },
-    {
-       "name": "KNC",
-        "Collateral Enabled": false,
-        "Borrowing Enabled": true,
-         "LTV":"0%",
-        "Liquidation Threshold":"37%",
-        "Optimal Utilization":"45%",
-        "Variable Borrow Rate":"3.32%"
-    },
-    {
-       "name": "FXS",
-        "Collateral Enabled": false,
-        "Borrowing Enabled": true,
-       "LTV":"0%",
-        "Liquidation Threshold":"42%",
-         "Optimal Utilization":"45%",
-        "Variable Borrow Rate":"0.26%"
-    },
-    {
-        "name":"crvUSD",
-        "Collateral Enabled": false,
-         "Borrowing Enabled": true,
-        "LTV":"0%",
-       "Liquidation Threshold":"0%",
-         "Optimal Utilization":"80%",
-       "Variable Borrow Rate":"24.10%"
-     },
-     {
-      "name":"PYUSD",
-       "Collateral Enabled": true,
-        "Borrowing Enabled": true,
-       "LTV":"75%",
-        "Liquidation Threshold":"78%",
-         "Optimal Utilization":"80%",
-       "Variable Borrow Rate":"10.86%"
-     },
-      {
-        "name":"weETH",
-         "Collateral Enabled": true,
-        "Borrowing Enabled": true,
-       "LTV":"77.5%",
-        "Liquidation Threshold":"80%",
-        "Optimal Utilization": "30%",
-        "Variable Borrow Rate":"1.05%"
-       },
-       {
-        "name": "osETH",
-         "Collateral Enabled": true,
-        "Borrowing Enabled": true,
-         "LTV": "72.5%",
-        "Liquidation Threshold": "75%",
-          "Optimal Utilization":"45%",
-        "Variable Borrow Rate":"0.58%"
-        },
-        {
-        "name": "USDe",
-          "Collateral Enabled": true,
-        "Borrowing Enabled": true,
-        "LTV":"72%",
-        "Liquidation Threshold":"75%",
-         "Optimal Utilization":"80%",
-        "Variable Borrow Rate":"7.72%"
-        },
-    {
-      "name":"ETHx",
-       "Collateral Enabled": true,
-        "Borrowing Enabled": true,
-        "LTV":"74.5%",
-        "Liquidation Threshold":"77%",
-         "Optimal Utilization":"45%",
-       "Variable Borrow Rate":"0.06%"
-     },
-        {
-        "name":"sUSDe",
-        "Collateral Enabled": true,
-        "Borrowing Enabled": false,
-         "LTV":"72%",
-        "Liquidation Threshold":"75%",
-         "Optimal Utilization":"90%",
-        "Variable Borrow Rate":"0.00%"
-         },
-        {
-        "name":"tBTC",
-       "Collateral Enabled": true,
-        "Borrowing Enabled": true,
-        "LTV":"73%",
-       "Liquidation Threshold":"78%",
-         "Optimal Utilization":"45%",
-        "Variable Borrow Rate":"0.21%"
-    },
-    {
-      "name":"cbBTC",
-       "Collateral Enabled": true,
+      "Collateral Enabled": false,
       "Borrowing Enabled": true,
-       "LTV":"73%",
-       "Liquidation Threshold":"78%",
-        "Optimal Utilization":"45%",
+      "LTV": "0%",
+      "Liquidation Threshold": "37%",
+      "Optimal Utilization": "45%",
+      "Variable Borrow Rate": "0.33%"
+    },
+    {
+      "name": "KNC",
+      "Collateral Enabled": false,
+      "Borrowing Enabled": true,
+      "LTV": "0%",
+      "Liquidation Threshold": "37%",
+      "Optimal Utilization": "45%",
+      "Variable Borrow Rate": "3.32%"
+    },
+    {
+      "name": "FXS",
+      "Collateral Enabled": false,
+      "Borrowing Enabled": true,
+      "LTV": "0%",
+      "Liquidation Threshold": "42%",
+      "Optimal Utilization": "45%",
+      "Variable Borrow Rate": "0.26%"
+    },
+    {
+      "name": "crvUSD",
+      "Collateral Enabled": false,
+      "Borrowing Enabled": true,
+      "LTV": "0%",
+      "Liquidation Threshold": "0%",
+      "Optimal Utilization": "80%",
+      "Variable Borrow Rate": "24.10%"
+    },
+    {
+      "name": "PYUSD",
+      "Collateral Enabled": true,
+      "Borrowing Enabled": true,
+      "LTV": "75%",
+      "Liquidation Threshold": "78%",
+      "Optimal Utilization": "80%",
+      "Variable Borrow Rate": "10.86%"
+    },
+    {
+      "name": "weETH",
+      "Collateral Enabled": true,
+      "Borrowing Enabled": true,
+      "LTV": "77.5%",
+      "Liquidation Threshold": "80%",
+      "Optimal Utilization": "30%",
+      "Variable Borrow Rate": "1.05%"
+    },
+    {
+      "name": "osETH",
+      "Collateral Enabled": true,
+      "Borrowing Enabled": true,
+      "LTV": "72.5%",
+      "Liquidation Threshold": "75%",
+      "Optimal Utilization": "45%",
+      "Variable Borrow Rate": "0.58%"
+    },
+    {
+      "name": "USDe",
+      "Collateral Enabled": true,
+      "Borrowing Enabled": true,
+      "LTV": "72%",
+      "Liquidation Threshold": "75%",
+      "Optimal Utilization": "80%",
+      "Variable Borrow Rate": "7.72%"
+    },
+    {
+      "name": "ETHx",
+      "Collateral Enabled": true,
+      "Borrowing Enabled": true,
+      "LTV": "74.5%",
+      "Liquidation Threshold": "77%",
+      "Optimal Utilization": "45%",
+      "Variable Borrow Rate": "0.06%"
+    },
+    {
+      "name": "sUSDe",
+      "Collateral Enabled": true,
+      "Borrowing Enabled": false,
+      "LTV": "72%",
+      "Liquidation Threshold": "75%",
+      "Optimal Utilization": "90%",
+      "Variable Borrow Rate": "0.00%"
+    },
+    {
+      "name": "tBTC",
+      "Collateral Enabled": true,
+      "Borrowing Enabled": true,
+      "LTV": "73%",
+      "Liquidation Threshold": "78%",
+      "Optimal Utilization": "45%",
+      "Variable Borrow Rate": "0.21%"
+    },
+    {
+      "name": "cbBTC",
+      "Collateral Enabled": true,
+      "Borrowing Enabled": true,
+      "LTV": "73%",
+      "Liquidation Threshold": "78%",
+      "Optimal Utilization": "45%",
       "Variable Borrow Rate": "0.38%"
     },
     {
-       "name":"USDS",
+      "name": "USDS",
       "Collateral Enabled": true,
-       "Borrowing Enabled": true,
-      "LTV":"75%",
-      "Liquidation Threshold":"78%",
-        "Optimal Utilization":"92%",
-     "Variable Borrow Rate":"12.70%"
-    },
-        {
-       "name":"rsETH",
-        "Collateral Enabled": true,
       "Borrowing Enabled": true,
-        "LTV": "72%",
-      "Liquidation Threshold":"75%",
-         "Optimal Utilization":"45%",
-       "Variable Borrow Rate":"0.00%"
+      "LTV": "75%",
+      "Liquidation Threshold": "78%",
+      "Optimal Utilization": "92%",
+      "Variable Borrow Rate": "12.70%"
+    },
+    {
+      "name": "rsETH",
+      "Collateral Enabled": true,
+      "Borrowing Enabled": true,
+      "LTV": "72%",
+      "Liquidation Threshold": "75%",
+      "Optimal Utilization": "45%",
+      "Variable Borrow Rate": "0.00%"
     }
   ]
 }
