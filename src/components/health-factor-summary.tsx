@@ -83,7 +83,7 @@ export function HealthFactorSummary() {
       <div className="flex flex-col gap-6 md:flex-row">
         <Card className="w-full md:w-1/3 h-[71px] bg-secondary">
           <CardTitle className="p-2 pb-1.5 text-sm font-normal leading-[17.5px]">
-            Liquidation Threshold
+            Liquidation Threshold Price
           </CardTitle>
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
             $
