@@ -1,9 +1,36 @@
-import type { AaveParameters, AaveParameter } from "../types/aave";
+import type { AaveParameter } from "../types/aave";
 import aaveParametersData from "@/../docs/aave-parameter";
 
 /**
- * Strictly checks if a value is boolean true
+ * Type definitions
  */
+export interface Currency {
+  value: string;
+  label: string;
+  liquidationThreshold: string;
+  ltv: string;
+  variableBorrowRate: string;
+}
+
+export type CurrencyMode = "collateral" | "debt";
+
+/**
+ * Validates if a parameter matches the AaveParameter interface structure
+ * @param param - Parameter to validate
+ * @returns boolean indicating if the parameter is valid
+ */
+function isValidAaveParameter(param: unknown): param is AaveParameter {
+  if (!param || typeof param !== "object") return false;
+  const p = param as Partial<AaveParameter>;
+  return (
+    typeof p.name === "string" &&
+    typeof p["Collateral Enabled"] === "boolean" &&
+    typeof p["Borrowing Enabled"] === "boolean" &&
+    typeof p["Liquidation Threshold"] === "string" &&
+    typeof p.LTV === "string" &&
+    typeof p["Variable Borrow Rate"] === "string"
+  );
+}
 const isStrictlyTrue = (value: any): boolean => value === true;
 
 /**
@@ -23,18 +50,19 @@ const debugCurrencyFiltering = (
     console.groupEnd();
   }
 };
-const aaveParameters = { parameters: aaveParametersData } as AaveParameters;
-
 /**
- * Represents a currency option in the UI
+ * Parse and validate Aave parameters from raw data
  */
-export interface Currency {
-  value: string;
-  label: string;
-  liquidationThreshold: string;
-  ltv: string;
-  variableBorrowRate: string;
-}
+const parsedAaveParameters: AaveParameter[] = aaveParametersData.map(
+  (param): AaveParameter => ({
+    name: String(param.name),
+    "Collateral Enabled": Boolean(param["Collateral Enabled"]),
+    "Borrowing Enabled": Boolean(param["Borrowing Enabled"]),
+    "Liquidation Threshold": String(param["Liquidation Threshold"]),
+    LTV: String(param.LTV),
+    "Variable Borrow Rate": String(param["Variable Borrow Rate"]),
+  }),
+);
 
 /**
  * Defines the mode of operation for currency filtering
@@ -44,26 +72,30 @@ export type CurrencyMode = "collateral" | "debt";
 /**
  * Returns a filtered and formatted list of currencies based on the specified mode
  */
-export const getFilteredCurrencies = (mode: CurrencyMode): Currency[] => {
+
+export const getFilteredCurrencies = (
+  mode: CurrencyMode,
+): Currency[] | never => {
+  if (!["collateral", "debt"].includes(mode)) {
+    throw new Error(`Invalid currency mode: ${mode}`);
+  }
   if (process.env.NODE_ENV === "development") {
     console.group(`Filtering currencies for mode: ${mode}`);
   }
 
   // First filter the parameters based on mode with strict boolean checking
-  const eligibleTokens = aaveParameters.parameters.filter(
-    (param: AaveParameter) => {
-      console.log(`Filtering currency: ${param.name}, Mode: ${mode}`); // ADD
-      console.log(`Borrowing Enabled value: ${param["Borrowing Enabled"]}`); // ADD
-      const isEnabled =
-        mode === "collateral"
-          ? isStrictlyTrue(param["Collateral Enabled"])
-          : isStrictlyTrue(param["Borrowing Enabled"]);
+  const eligibleTokens = parsedAaveParameters.filter((param: AaveParameter) => {
+    console.log(`Filtering currency: ${param.name}, Mode: ${mode}`); // ADD
+    console.log(`Borrowing Enabled value: ${param["Borrowing Enabled"]}`); // ADD
+    const isEnabled =
+      mode === "collateral"
+        ? isStrictlyTrue(param["Collateral Enabled"])
+        : isStrictlyTrue(param["Borrowing Enabled"]);
 
-      debugCurrencyFiltering(param, mode, isEnabled);
+    debugCurrencyFiltering(param, mode, isEnabled);
 
-      return isEnabled;
-    },
-  );
+    return isEnabled;
+  });
 
   if (process.env.NODE_ENV === "development") {
     console.log(`Found ${eligibleTokens.length} eligible tokens`);
@@ -91,22 +123,41 @@ export const getFilteredCurrencies = (mode: CurrencyMode): Currency[] => {
     };
   });
 
-  return currencyList.sort((a, b) => a.label.localeCompare(b.label));
+  return currencyList.sort((a: Currency, b: Currency) =>
+    a.label.localeCompare(b.label),
+  );
 };
-export function validateCurrencyFiltering() {
+export function validateCurrencyFiltering(): void {
   const debtCurrencies = getFilteredCurrencies("debt");
-  const invalidCurrencies = debtCurrencies.filter(
-    (currency) =>
-      aaveParameters.parameters.find((p) => p.name === currency.value)?.[
-        "Borrowing Enabled"
-      ] === false,
+  const collateralCurrencies = getFilteredCurrencies("collateral");
+
+  const invalidDebtCurrencies = debtCurrencies.filter((currency: Currency) => {
+    const param = parsedAaveParameters.find(
+      (p: AaveParameter) => p.name === currency.value,
+    );
+    return param && !param["Borrowing Enabled"];
+  });
+
+  const invalidCollateralCurrencies = collateralCurrencies.filter(
+    (currency: Currency) => {
+      const param = parsedAaveParameters.find(
+        (p: AaveParameter) => p.name === currency.value,
+      );
+      return param && !param["Collateral Enabled"];
+    },
   );
 
-  if (invalidCurrencies.length > 0) {
+  if (invalidDebtCurrencies.length > 0) {
+    console.error("Invalid debt currencies found:", invalidDebtCurrencies);
+    throw new Error("Invalid debt currencies detected");
+  }
+
+  if (invalidCollateralCurrencies.length > 0) {
     console.error(
-      "Found currencies with Borrowing Enabled = false in debt mode:",
-      invalidCurrencies,
+      "Invalid collateral currencies found:",
+      invalidCollateralCurrencies,
     );
+    throw new Error("Invalid collateral currencies detected");
   }
 }
 
