@@ -135,6 +135,31 @@ export function validateCurrencyFiltering(): void {
   }
 }
 
+/**
+ * Calculates the health factor based on collateral value, total borrowed, and liquidation threshold.
+ */
+export const calculateHealthFactor = (
+  collateralValue: number,
+  totalBorrowed: number,
+  liquidationThreshold: number
+): number => {
+  if (totalBorrowed === 0) {
+    return 999999; // Or another very high number to represent infinite health factor
+  }
+  return (collateralValue * liquidationThreshold) / totalBorrowed;
+};
+
+
+export const getLiquidationThreshold = (currencyName: string): number => {
+  const param = parsedAaveParameters.find(
+    (p: AaveParameter) => p.name === currencyName,
+  );
+  if (!param) {
+    throw new Error(`Liquidation threshold not found for currency: ${currencyName}`);
+  }
+  return parseFloat(param["Liquidation Threshold"]);
+};
+
 // Run validation in development
 if (process.env.NODE_ENV === "development") {
   validateCurrencyFiltering();
