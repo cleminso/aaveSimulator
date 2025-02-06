@@ -5,8 +5,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "80.5%",
-      "Liquidation Threshold": "83%",
-      "Optimal Utilization": "90%",
+      "Liquidation Threshold": "0.83",
+      "Optimal Utilization": "0.90",
       "Variable Borrow Rate": "2.60%"
     },
     {
@@ -14,8 +14,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "78.5%",
-      "Liquidation Threshold": "81%",
-      "Optimal Utilization": "80%",
+      "Liquidation Threshold": "0.81",
+      "Optimal Utilization": "0.80",
       "Variable Borrow Rate": "0.65%"
     },
     {
@@ -23,8 +23,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "73%",
-      "Liquidation Threshold": "78%",
-      "Optimal Utilization": "80%",
+      "Liquidation Threshold": "0.78",
+      "Optimal Utilization": "0.80",
       "Variable Borrow Rate": "0.42%"
     },
     {
@@ -32,8 +32,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "75%",
-      "Liquidation Threshold": "78%",
-      "Optimal Utilization": "92%",
+      "Liquidation Threshold": "0.78",
+      "Optimal Utilization": "0.92",
       "Variable Borrow Rate": "12.49%"
     },
     {
@@ -41,8 +41,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "63%",
-      "Liquidation Threshold": "77%",
-      "Optimal Utilization": "92%",
+      "Liquidation Threshold": "0.77",
+      "Optimal Utilization": "0.92",
       "Variable Borrow Rate": "11.61%"
     },
     {
@@ -50,8 +50,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "66%",
-      "Liquidation Threshold": "71%",
-      "Optimal Utilization": "45%",
+      "Liquidation Threshold": "0.71",
+      "Optimal Utilization": "0.45",
       "Variable Borrow Rate": "0.23%"
     },
     {
@@ -59,8 +59,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": false,
       "LTV": "66%",
-      "Liquidation Threshold": "73%",
-      "Optimal Utilization": "45%",
+      "Liquidation Threshold": "0.73",
+      "Optimal Utilization": "0.45",
       "Variable Borrow Rate": "0.00%"
     },
     {
@@ -68,8 +68,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "75%",
-      "Liquidation Threshold": "79%",
-      "Optimal Utilization": "45%",
+      "Liquidation Threshold": "0.79",
+      "Optimal Utilization": "0.45",
       "Variable Borrow Rate": "2.07%"
     },
     {
@@ -77,8 +77,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "75%",
-      "Liquidation Threshold": "78%",
-      "Optimal Utilization": "92%",
+      "Liquidation Threshold": "0.78",
+      "Optimal Utilization": "0.92",
       "Variable Borrow Rate": "10.31%"
     },
     {
@@ -86,8 +86,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "75%",
-      "Liquidation Threshold": "79%",
-      "Optimal Utilization": "45%",
+      "Liquidation Threshold": "0.79",
+      "Optimal Utilization": "0.45",
       "Variable Borrow Rate": "0.36%"
     },
     {
@@ -95,8 +95,8 @@
       "Collateral Enabled": false,
       "Borrowing Enabled": true,
       "LTV": "0%",
-      "Liquidation Threshold": "77%",
-      "Optimal Utilization": "80%",
+      "Liquidation Threshold": "0.77",
+      "Optimal Utilization": "0.80",
       "Variable Borrow Rate": "15.27%"
     },
     {
@@ -104,8 +104,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "35%",
-      "Liquidation Threshold": "41%",
-      "Optimal Utilization": "70%",
+      "Liquidation Threshold": "0.41",
+      "Optimal Utilization": "0.70",
       "Variable Borrow Rate": "13.21%"
     },
     {
@@ -113,8 +113,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "65%",
-      "Liquidation Threshold": "70%",
-      "Optimal Utilization": "45%",
+      "Liquidation Threshold": "0.70",
+      "Optimal Utilization": "0.45",
       "Variable Borrow Rate": "0.22%"
     },
     {
@@ -122,8 +122,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "49%",
-      "Liquidation Threshold": "65%",
-      "Optimal Utilization": "80%",
+      "Liquidation Threshold": "0.65",
+      "Optimal Utilization": "0.80",
       "Variable Borrow Rate": "3.60%"
     },
     {
@@ -131,8 +131,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "57%",
-      "Liquidation Threshold": "59%",
-      "Optimal Utilization": "80%",
+      "Liquidation Threshold": "0.59",
+      "Optimal Utilization": "0.80",
       "Variable Borrow Rate": "5.79%"
     },
     {
@@ -140,8 +140,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "65%",
-      "Liquidation Threshold": "74%",
-      "Optimal Utilization": "45%",
+      "Liquidation Threshold": "0.74",
+      "Optimal Utilization": "0.45",
       "Variable Borrow Rate": "0.39%"
     },
     {
@@ -149,8 +149,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "40%",
-      "Liquidation Threshold": "50%",
-      "Optimal Utilization": "45%",
+      "Liquidation Threshold": "0.50",
+      "Optimal Utilization": "0.45",
       "Variable Borrow Rate": "0.26%"
     },
     {
@@ -158,8 +158,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "39%",
-      "Liquidation Threshold": "49%",
-      "Optimal Utilization": "45%",
+      "Liquidation Threshold": "0.49",
+      "Optimal Utilization": "0.45",
       "Variable Borrow Rate": "0.53%"
     },
     {
@@ -167,8 +167,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "57%",
-      "Liquidation Threshold": "67%",
-      "Optimal Utilization": "45%",
+      "Liquidation Threshold": "0.67",
+      "Optimal Utilization": "0.45",
       "Variable Borrow Rate": "4.95%"
     },
     {
@@ -176,8 +176,8 @@
       "Collateral Enabled": false,
       "Borrowing Enabled": true,
       "LTV": "0%",
-      "Liquidation Threshold": "72%",
-      "Optimal Utilization": "90%",
+      "Liquidation Threshold": "0.72",
+      "Optimal Utilization": "0.90",
       "Variable Borrow Rate": "11.73%"
     },
     {
@@ -185,8 +185,8 @@
       "Collateral Enabled": false,
       "Borrowing Enabled": true,
       "LTV": "0%",
-      "Liquidation Threshold": "0%",
-      "Optimal Utilization": "99%",
+      "Liquidation Threshold": "0.00",
+      "Optimal Utilization": "0.99",
       "Variable Borrow Rate": "9.42%"
     },
     {
@@ -194,8 +194,8 @@
       "Collateral Enabled": false,
       "Borrowing Enabled": true,
       "LTV": "0%",
-      "Liquidation Threshold": "0%",
-      "Optimal Utilization": "80%",
+      "Liquidation Threshold": "0.00",
+      "Optimal Utilization": "0.80",
       "Variable Borrow Rate": "3.99%"
     },
     {
@@ -203,8 +203,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": false,
       "LTV": "75%",
-      "Liquidation Threshold": "78%",
-      "Optimal Utilization": "90%",
+      "Liquidation Threshold": "0.78",
+      "Optimal Utilization": "0.90",
       "Variable Borrow Rate": "0.00%"
     },
     {
@@ -212,8 +212,8 @@
       "Collateral Enabled": false,
       "Borrowing Enabled": true,
       "LTV": "0%",
-      "Liquidation Threshold": "37%",
-      "Optimal Utilization": "45%",
+      "Liquidation Threshold": "0.37",
+      "Optimal Utilization": "0.45",
       "Variable Borrow Rate": "0.33%"
     },
     {
@@ -221,8 +221,8 @@
       "Collateral Enabled": false,
       "Borrowing Enabled": true,
       "LTV": "0%",
-      "Liquidation Threshold": "37%",
-      "Optimal Utilization": "45%",
+      "Liquidation Threshold": "0.37",
+      "Optimal Utilization": "0.45",
       "Variable Borrow Rate": "3.32%"
     },
     {
@@ -230,8 +230,8 @@
       "Collateral Enabled": false,
       "Borrowing Enabled": true,
       "LTV": "0%",
-      "Liquidation Threshold": "42%",
-      "Optimal Utilization": "45%",
+      "Liquidation Threshold": "0.42",
+      "Optimal Utilization": "0.45",
       "Variable Borrow Rate": "0.26%"
     },
     {
@@ -239,8 +239,8 @@
       "Collateral Enabled": false,
       "Borrowing Enabled": true,
       "LTV": "0%",
-      "Liquidation Threshold": "0%",
-      "Optimal Utilization": "80%",
+      "Liquidation Threshold": "0.00",
+      "Optimal Utilization": "0.80",
       "Variable Borrow Rate": "24.10%"
     },
     {
@@ -248,8 +248,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "75%",
-      "Liquidation Threshold": "78%",
-      "Optimal Utilization": "80%",
+      "Liquidation Threshold": "0.78",
+      "Optimal Utilization": "0.80",
       "Variable Borrow Rate": "10.86%"
     },
     {
@@ -257,8 +257,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "77.5%",
-      "Liquidation Threshold": "80%",
-      "Optimal Utilization": "30%",
+      "Liquidation Threshold": "0.80",
+      "Optimal Utilization": "0.30",
       "Variable Borrow Rate": "1.05%"
     },
     {
@@ -266,8 +266,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "72.5%",
-      "Liquidation Threshold": "75%",
-      "Optimal Utilization": "45%",
+      "Liquidation Threshold": "0.75",
+      "Optimal Utilization": "0.45",
       "Variable Borrow Rate": "0.58%"
     },
     {
@@ -275,8 +275,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "72%",
-      "Liquidation Threshold": "75%",
-      "Optimal Utilization": "80%",
+      "Liquidation Threshold": "0.75",
+      "Optimal Utilization": "0.80",
       "Variable Borrow Rate": "7.72%"
     },
     {
@@ -284,8 +284,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "74.5%",
-      "Liquidation Threshold": "77%",
-      "Optimal Utilization": "45%",
+      "Liquidation Threshold": "0.77",
+      "Optimal Utilization": "0.45",
       "Variable Borrow Rate": "0.06%"
     },
     {
@@ -293,8 +293,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": false,
       "LTV": "72%",
-      "Liquidation Threshold": "75%",
-      "Optimal Utilization": "90%",
+      "Liquidation Threshold": "0.75",
+      "Optimal Utilization": "0.90",
       "Variable Borrow Rate": "0.00%"
     },
     {
@@ -302,8 +302,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "73%",
-      "Liquidation Threshold": "78%",
-      "Optimal Utilization": "45%",
+      "Liquidation Threshold": "0.78",
+      "Optimal Utilization": "0.45",
       "Variable Borrow Rate": "0.21%"
     },
     {
@@ -311,8 +311,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "73%",
-      "Liquidation Threshold": "78%",
-      "Optimal Utilization": "45%",
+      "Liquidation Threshold": "0.78",
+      "Optimal Utilization": "0.45",
       "Variable Borrow Rate": "0.38%"
     },
     {
@@ -320,8 +320,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "75%",
-      "Liquidation Threshold": "78%",
-      "Optimal Utilization": "92%",
+      "Liquidation Threshold": "0.78",
+      "Optimal Utilization": "0.92",
       "Variable Borrow Rate": "12.70%"
     },
     {
@@ -329,8 +329,8 @@
       "Collateral Enabled": true,
       "Borrowing Enabled": true,
       "LTV": "72%",
-      "Liquidation Threshold": "75%",
-      "Optimal Utilization": "45%",
+      "Liquidation Threshold": "0.75",
+      "Optimal Utilization": "0.45%",
       "Variable Borrow Rate": "0.00%"
     }
   ]
