@@ -1,5 +1,5 @@
 import type { AaveParameters, AaveParameter } from "../types/aave";
-import parameters from "@/../docs/aave-parameter.json";
+import aaveParametersData from "@/../docs/aave-parameter";
 
 /**
  * Strictly checks if a value is boolean true
@@ -23,7 +23,7 @@ const debugCurrencyFiltering = (
     console.groupEnd();
   }
 };
-const aaveParameters = parameters as AaveParameters;
+const aaveParameters = { parameters: aaveParametersData } as AaveParameters;
 
 /**
  * Represents a currency option in the UI
