@@ -85,8 +85,6 @@ export const getFilteredCurrencies = (
 
   // First filter the parameters based on mode with strict boolean checking
   const eligibleTokens = parsedAaveParameters.filter((param: AaveParameter) => {
-    console.log(`Filtering currency: ${param.name}, Mode: ${mode}`); // ADD
-    console.log(`Borrowing Enabled value: ${param["Borrowing Enabled"]}`); // ADD
     const isEnabled =
       mode === "collateral"
         ? isStrictlyTrue(param["Collateral Enabled"])
