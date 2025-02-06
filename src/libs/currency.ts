@@ -48,11 +48,6 @@ const parsedAaveParameters: AaveParameter[] = aaveParametersData.map(
 );
 
 /**
- * Defines the mode of operation for currency filtering
- */
-export type CurrencyMode = "collateral" | "debt";
-
-/**
  * Returns a filtered and formatted list of currencies based on the specified mode
  */
 
