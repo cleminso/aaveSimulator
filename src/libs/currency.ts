@@ -34,23 +34,6 @@ function isValidAaveParameter(param: unknown): param is AaveParameter {
 const isStrictlyTrue = (value: any): boolean => value === true;
 
 /**
- * Debug logging utility
- */
-const debugCurrencyFiltering = (
-  param: AaveParameter,
-  mode: CurrencyMode,
-  isIncluded: boolean,
-) => {
-  if (process.env.NODE_ENV === "development") {
-    console.group(`Currency: ${param.name}`);
-    console.log(`Mode: ${mode}`);
-    console.log(`Collateral Enabled: ${param["Collateral Enabled"]}`);
-    console.log(`Borrowing Enabled: ${param["Borrowing Enabled"]}`);
-    console.log(`Included in results: ${isIncluded}`);
-    console.groupEnd();
-  }
-};
-/**
  * Parse and validate Aave parameters from raw data
  */
 const parsedAaveParameters: AaveParameter[] = aaveParametersData.map(
@@ -89,8 +72,6 @@ export const getFilteredCurrencies = (
       mode === "collateral"
         ? isStrictlyTrue(param["Collateral Enabled"])
         : isStrictlyTrue(param["Borrowing Enabled"]);
-
-    debugCurrencyFiltering(param, mode, isEnabled);
 
     return isEnabled;
   });
