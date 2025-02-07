@@ -1,5 +1,5 @@
 import type { AaveParameter } from "../types/aave";
-import aaveParametersData from "@/../docs/aave-parameter";
+import aaveParametersData from "../libs/aave-parameter";
 
 /**
  * Type definitions
@@ -141,7 +141,7 @@ export function validateCurrencyFiltering(): void {
 export const calculateHealthFactor = (
   collateralValue: number,
   totalBorrowed: number,
-  liquidationThreshold: number
+  liquidationThreshold: number,
 ): number => {
   if (totalBorrowed === 0) {
     return 999999; // Or another very high number to represent infinite health factor
@@ -149,13 +149,14 @@ export const calculateHealthFactor = (
   return (collateralValue * liquidationThreshold) / totalBorrowed;
 };
 
-
 export const getLiquidationThreshold = (currencyName: string): number => {
   const param = parsedAaveParameters.find(
     (p: AaveParameter) => p.name === currencyName,
   );
   if (!param) {
-    throw new Error(`Liquidation threshold not found for currency: ${currencyName}`);
+    throw new Error(
+      `Liquidation threshold not found for currency: ${currencyName}`,
+    );
   }
   return parseFloat(param["Liquidation Threshold"]);
 };
