@@ -26,7 +26,7 @@ export function HealthFactorSummary({ collateralCurrency, debtCurrency }: Health
       liquidationThreshold
     );
     setHealthFactorValue(newHealthFactorValue);
-  }, [collateral.positionValue, debt.positionValue, collateralCurrency]);
+  }, [collateral.positionValue, debt.positionValue, collateralCurrency, debtCurrency]); // ADD debtCurrency to dependency array
 
   const getTooltipTriggerBackgroundColor = (value: number) => {
     if (value <= 1.1) return "bg-error";
