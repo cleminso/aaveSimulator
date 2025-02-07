@@ -1,5 +1,5 @@
 import type { AaveParameter } from "../types/aave";
-import aaveParametersData from "../libs/aave-parameter";
+import aaveParametersData from "./aave-parameter";
 
 /**
  * Type definitions
