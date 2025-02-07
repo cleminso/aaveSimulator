@@ -10,6 +10,7 @@ import {
   calculateHealthFactor,
   getLiquidationThreshold,
   getMaxLTV,
+  getCurrentLTV,
 } from "@/libs/currency"; // Updated import path!
 import { useEffect, useState } from "react";
 
@@ -25,6 +26,7 @@ export function HealthFactorSummary({
   const { collateral, debt } = usePositionStore();
   const [healthFactorValue, setHealthFactorValue] = useState<number>(NaN); // Initialize to NaN
   const [maxLTV, setMaxLTV] = useState<number | undefined>(undefined);
+  const [currentLTV, setCurrentLTV] = useState<number>(NaN); // Initialize to NaN
 
   useEffect(() => {
     if (
@@ -45,11 +47,15 @@ export function HealthFactorSummary({
           liquidationThreshold,
         );
         setHealthFactorValue(newHealthFactorValue);
+
+        const newCurrentLTV = getCurrentLTV(debt.positionValue, collateral.positionValue);
+        setCurrentLTV(newCurrentLTV);
       } catch (error) {
         console.error("Error fetching liquidation threshold:", error);
       }
     } else {
       setHealthFactorValue(NaN); // Set to NaN when conditions are not met
+      setCurrentLTV(NaN); // Set to NaN when conditions are not met
     }
   }, [
     collateral.positionValue,
@@ -157,7 +163,7 @@ export function HealthFactorSummary({
             Current LTV / Max LTV
           </CardTitle>
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
-            {maxLTV !== undefined ? `0.00/${(maxLTV * 100).toFixed(2)}%` : "0.00/--"}
+            {isNaN(currentLTV) ? "--" : `${currentLTV.toFixed(2)}%`} / {maxLTV !== undefined ? `${(maxLTV * 100).toFixed(2)}%` : "--"}
           </CardContent>
         </Card>
         <Card className="w-full md:w-1/3 h-[71px] bg-secondary">

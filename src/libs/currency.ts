@@ -154,6 +154,13 @@ export const getMaxLTV = (currencyName: string): number | undefined => {
   return param.LTV;
 };
 
+export const getCurrentLTV = (totalBorrowed: number, collateralValue: number): number => {
+  if (collateralValue === 0) {
+    return NaN;
+  }
+  return (totalBorrowed / collateralValue) * 100;
+};
+
 // Run validation in development
 if (process.env.NODE_ENV === "development") {
   validateCurrencyFiltering();
