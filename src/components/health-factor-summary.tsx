@@ -6,8 +6,10 @@ import {
 } from "@/components/ui/tooltip";
 
 import { usePositionStore } from "@/stores/position-store";
-import { PositionState } from "@/stores/position-store";
-import { calculateHealthFactor, getLiquidationThreshold } from "@/libs/currency"; // Updated import path!
+import {
+  calculateHealthFactor,
+  getLiquidationThreshold,
+} from "@/libs/currency"; // Updated import path!
 import { useEffect, useState } from "react";
 
 interface HealthFactorSummaryProps {
@@ -15,7 +17,10 @@ interface HealthFactorSummaryProps {
   debtCurrency: string | undefined; // debtCurrency can be undefined as well
 }
 
-export function HealthFactorSummary({ collateralCurrency, debtCurrency }: HealthFactorSummaryProps) {
+export function HealthFactorSummary({
+  collateralCurrency,
+  debtCurrency,
+}: HealthFactorSummaryProps) {
   const { collateral, debt } = usePositionStore();
   const [healthFactorValue, setHealthFactorValue] = useState<number>(NaN); // Initialize to NaN
 
@@ -28,21 +33,32 @@ export function HealthFactorSummary({ collateralCurrency, debtCurrency }: Health
       collateral.tokenPrice !== 0 && // Check if collateral tokenPrice !== 0
       debt.tokenPrice !== 0 // Check if debt tokenPrice !== 0
     ) {
-      try { // Check if debt tokenPrice !== 0
-          const liquidationThreshold = getLiquidationThreshold(collateralCurrency);
-          const newHealthFactorValue = calculateHealthFactor(
-            collateral.positionValue,
-            debt.positionValue,
-            liquidationThreshold
-          );
-          setHealthFactorValue(newHealthFactorValue);
-        } catch (error) {
-          console.error("Error fetching liquidation threshold:", error);
-        }
-    } else {
-        setHealthFactorValue(NaN); // Set to NaN when conditions are not met
+      try {
+        // Check if debt tokenPrice !== 0
+        const liquidationThreshold =
+          getLiquidationThreshold(collateralCurrency);
+        const newHealthFactorValue = calculateHealthFactor(
+          collateral.positionValue,
+          debt.positionValue,
+          liquidationThreshold,
+        );
+        setHealthFactorValue(newHealthFactorValue);
+      } catch (error) {
+        console.error("Error fetching liquidation threshold:", error);
       }
-  }, [collateral.positionValue, debt.positionValue, collateralCurrency, debtCurrency, collateral.tokenQuantity, debt.tokenQuantity, collateral.tokenPrice, debt.tokenPrice]); // ADD tokenQuantity and tokenPrice from both sections to dependency array
+    } else {
+      setHealthFactorValue(NaN); // Set to NaN when conditions are not met
+    }
+  }, [
+    collateral.positionValue,
+    debt.positionValue,
+    collateralCurrency,
+    debtCurrency,
+    collateral.tokenQuantity,
+    debt.tokenQuantity,
+    collateral.tokenPrice,
+    debt.tokenPrice,
+  ]); // ADD tokenQuantity and tokenPrice from both sections to dependency array
 
   const getTooltipTriggerBackgroundColor = (value: number) => {
     if (value <= 1.1) return "bg-error";
@@ -70,7 +86,10 @@ export function HealthFactorSummary({ collateralCurrency, debtCurrency }: Health
               className={`flex items-center justify-center h-[35px] w-fit px-2 rounded-[2px] ${getTooltipTriggerBackgroundColor(healthFactorValue)}`}
             >
               <span className="font-mono text-xl text-primary">
-                {collateralCurrency && !isNaN(healthFactorValue) ? healthFactorValue.toFixed(2) : "--"} {/* Display "--" if no currency selected or healthFactorValue is NaN */}
+                {collateralCurrency && !isNaN(healthFactorValue)
+                  ? healthFactorValue.toFixed(2)
+                  : "--"}{" "}
+                {/* Display "--" if no currency selected or healthFactorValue is NaN */}
               </span>
             </TooltipTrigger>
             <TooltipContent>
