@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import CollateralSection from "./collateral-section";
-import DebtSection from "./debt-section";
-import HealthFactorSummary from "./health-factor-summary";
+import { CollateralSection } from "./collateral-section";
+import { DebtSection } from "./debt-section";
+import { HealthFactorSummary } from "./health-factor-summary";
 
 export default function Simulator() {
   // ADD state for selected currencies in CollateralSection and DebtSection
