@@ -11,7 +11,8 @@ import {
   getLiquidationThreshold,
   getMaxLTV,
   getCurrentLTV,
-  getLiquidationThresholdPrice
+  getLiquidationThresholdPrice,
+  getAvailableToBorrow
 } from "@/libs/currency"; // Updated import path!
 import { useEffect, useState } from "react";
 
@@ -29,6 +30,7 @@ export function HealthFactorSummary({
   const [maxLTV, setMaxLTV] = useState<number | undefined>(undefined);
   const [currentLTV, setCurrentLTV] = useState<number>(NaN); // Initialize to NaN
   const [liquidationThresholdPriceValue, setLiquidationThresholdPriceValue] = useState<number>(0);
+  const [availableToBorrowValue, setAvailableToBorrowValue] = useState<number>(0);
 
   useEffect(() => {
     if (
@@ -59,6 +61,16 @@ export function HealthFactorSummary({
           liquidationThreshold
         );
         setLiquidationThresholdPriceValue(newLiquidationThresholdPrice);
+
+        const newMaxLTV = getMaxLTV(collateralCurrency);
+        if (newMaxLTV !== undefined) {
+          const newAvailableToBorrow = getAvailableToBorrow(
+            collateral.positionValue,
+            newMaxLTV,
+            debt.positionValue
+          );
+          setAvailableToBorrowValue(newAvailableToBorrow);
+        }
       } catch (error) {
         console.error("Error fetching liquidation threshold:", error);
       }
@@ -66,6 +78,7 @@ export function HealthFactorSummary({
       setHealthFactorValue(NaN); // Set to NaN when conditions are not met
       setCurrentLTV(NaN); // Set to NaN when conditions are not met
       setLiquidationThresholdPriceValue(0);
+      setAvailableToBorrowValue(0);
     }
   }, [
     collateral.positionValue,
@@ -155,7 +168,10 @@ export function HealthFactorSummary({
             Available to Borrow:
           </CardTitle>
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
-            $
+            ${availableToBorrowValue.toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
           </CardContent>
         </Card>
       </div>

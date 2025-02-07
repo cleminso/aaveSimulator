@@ -176,6 +176,14 @@ export const getLiquidationThresholdPrice = (
   return totalBorrowed / (totalCollateralAmount * liquidationThreshold);
 };
 
+export const getAvailableToBorrow = (
+  collateralValue: number,
+  maxLTV: number,
+  totalBorrowed: number
+): number => {
+  return (collateralValue * maxLTV) - totalBorrowed;
+};
+
 // Run validation in development
 if (process.env.NODE_ENV === "development") {
   validateCurrencyFiltering();
