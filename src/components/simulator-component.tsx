@@ -29,18 +29,20 @@ export default function Simulator() {
               debtCurrency={debtCurrency}
             />
           </section>
-          <section className="w-full md:w-1/2 space-y-6">
-            <CollateralSection
-              selectedCurrency={collateralCurrency} // Pass selected collateral currency
-              onSelectCurrency={handleCollateralCurrencyChange} // Pass handler for collateral currency
-            />
-          </section>
-          <section className="w-full md:w-1/2 space-y-6">
-            <DebtSection
-              selectedCurrency={debtCurrency} // Pass selected debt currency
-              onSelectCurrency={handleDebtCurrencyChange} // Pass handler for debt currency
-            />
-          </section>
+          <div className="flex md:flex-row w-full gap-6">
+            <section className="w-full space-y-6">
+              <CollateralSection
+                selectedCurrency={collateralCurrency}
+                onSelectCurrency={handleCollateralCurrencyChange}
+              />
+            </section>
+            <section className="w-full space-y-6">
+              <DebtSection
+                selectedCurrency={debtCurrency}
+                onSelectCurrency={handleDebtCurrencyChange}
+              />
+            </section>
+          </div>
         </div>
       </div>
     </main>
