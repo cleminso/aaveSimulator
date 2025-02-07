@@ -7,8 +7,8 @@ import { HealthFactorSummary } from "./health-factor-summary";
 
 export default function Simulator() {
   // ADD state for selected currencies in CollateralSection and DebtSection
-  const [collateralCurrency, setCollateralCurrency] = useState<string>("WETH"); // Default collateral currency
-  const [debtCurrency, setDebtCurrency] = useState<string>("DAI"); // Default debt currency
+  const [collateralCurrency, setCollateralCurrency] = useState<string | undefined>(undefined); // No default collateral currency
+  const [debtCurrency, setDebtCurrency] = useState<string | undefined>(undefined); // No default debt currency
 
   // Handler functions to update selected currencies
   const handleCollateralCurrencyChange = (currency: string) => {

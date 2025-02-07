@@ -10,8 +10,8 @@ import { calculateHealthFactor, getLiquidationThreshold } from "@/libs/currency"
 import { useEffect, useState } from "react";
 
 interface HealthFactorSummaryProps {
-  collateralCurrency: string;
-  debtCurrency: string;
+  collateralCurrency: string | undefined;
+  debtCurrency: string | undefined; // debtCurrency can be undefined as well
 }
 
 export function HealthFactorSummary({ collateralCurrency, debtCurrency }: HealthFactorSummaryProps) {
@@ -19,14 +19,22 @@ export function HealthFactorSummary({ collateralCurrency, debtCurrency }: Health
   const [healthFactorValue, setHealthFactorValue] = useState<number>(1); // Placeholder value for development
 
   useEffect(() => {
-    const liquidationThreshold = getLiquidationThreshold(collateralCurrency);
-    const newHealthFactorValue = calculateHealthFactor(
-      collateral.positionValue,
-      debt.positionValue,
-      liquidationThreshold
-    );
-    setHealthFactorValue(newHealthFactorValue);
-  }, [collateral.positionValue, debt.positionValue, collateralCurrency, debtCurrency]); // ADD debtCurrency to dependency array
+    if (collateralCurrency) { // Check if collateralCurrency is defined
+      try {
+        const liquidationThreshold = getLiquidationThreshold(collateralCurrency);
+        const newHealthFactorValue = calculateHealthFactor(
+          collateral.positionValue,
+          debt.positionValue,
+          liquidationThreshold
+        );
+        setHealthFactorValue(newHealthFactorValue);
+      } catch (error) {
+        console.error("Error fetching liquidation threshold:", error);
+      }
+    } else {
+      setHealthFactorValue(1); // Reset to default or placeholder when no currency is selected
+    }
+  }, [collateral.positionValue, debt.positionValue, collateralCurrency, debtCurrency]);
 
   const getTooltipTriggerBackgroundColor = (value: number) => {
     if (value <= 1.1) return "bg-error";
@@ -54,7 +62,7 @@ export function HealthFactorSummary({ collateralCurrency, debtCurrency }: Health
               className={`flex items-center justify-center h-[35px] w-fit px-2 rounded-[2px] ${getTooltipTriggerBackgroundColor(healthFactorValue)}`}
             >
               <span className="font-mono text-xl text-primary">
-                {healthFactorValue}
+                {collateralCurrency ? healthFactorValue.toFixed(2) : "--"} {/* Display "--" if no currency selected */}
               </span>
             </TooltipTrigger>
             <TooltipContent>
