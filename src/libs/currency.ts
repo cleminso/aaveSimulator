@@ -144,6 +144,16 @@ export const getLiquidationThreshold = (currencyName: string): number => {
   return parseFloat(param["Liquidation Threshold"]);
 };
 
+export const getMaxLTV = (currencyName: string): number | undefined => {
+  const param = parsedAaveParameters.find(
+    (p: AaveParameter) => p.name === currencyName,
+  );
+  if (!param) {
+    return undefined;
+  }
+  return parseFloat(param.LTV);
+};
+
 // Run validation in development
 if (process.env.NODE_ENV === "development") {
   validateCurrencyFiltering();

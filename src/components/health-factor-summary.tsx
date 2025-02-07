@@ -9,6 +9,7 @@ import { usePositionStore } from "@/stores/position-store";
 import {
   calculateHealthFactor,
   getLiquidationThreshold,
+  getMaxLTV,
 } from "@/libs/currency"; // Updated import path!
 import { useEffect, useState } from "react";
 
@@ -23,6 +24,7 @@ export function HealthFactorSummary({
 }: HealthFactorSummaryProps) {
   const { collateral, debt } = usePositionStore();
   const [healthFactorValue, setHealthFactorValue] = useState<number>(NaN); // Initialize to NaN
+  const [maxLTV, setMaxLTV] = useState<number | undefined>(undefined);
 
   useEffect(() => {
     if (
@@ -59,6 +61,15 @@ export function HealthFactorSummary({
     collateral.tokenPrice,
     debt.tokenPrice,
   ]); // ADD tokenQuantity and tokenPrice from both sections to dependency array
+
+  useEffect(() => {
+    if (collateralCurrency) {
+      const newMaxLTV = getMaxLTV(collateralCurrency);
+      setMaxLTV(newMaxLTV);
+    } else {
+      setMaxLTV(undefined);
+    }
+  }, [collateralCurrency]);
 
   const getTooltipTriggerBackgroundColor = (value: number) => {
     if (value <= 1.1) return "bg-error";
@@ -146,7 +157,7 @@ export function HealthFactorSummary({
             Current LTV / Max LTV
           </CardTitle>
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
-            0.00/90%
+            {maxLTV !== undefined ? `0.00/${(maxLTV * 100).toFixed(2)}%` : "0.00/--"}
           </CardContent>
         </Card>
         <Card className="w-full md:w-1/3 h-[71px] bg-secondary">
