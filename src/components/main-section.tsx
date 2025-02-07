@@ -1,5 +1,4 @@
 import { Input } from "@/components/ui/input";
-import { HealthFactorSummary } from "./health-factor-summary";
 import { CollateralVsDebt } from "./collateral-vs-debt";
 
 export function MainSection() {
@@ -10,7 +9,6 @@ export function MainSection() {
         className="w-1/3 text-base"
         placeholder="Enter your Ethereum address"
       />
-      <HealthFactorSummary />
       <CollateralVsDebt />
     </div>
   );
