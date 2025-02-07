@@ -22,9 +22,12 @@ export default function Simulator() {
   return (
     <main className="p-0">
       <div className="mt-0 space-y-6">
-        <div className="flex flex-col gap-6 md:flex-row">
-          <section className="w-full md:w-1/2 space-y-6">
-            <HealthFactorSummary collateralCurrency={collateralCurrency} debtCurrency={debtCurrency} />
+        <div className="flex flex-col gap-6">
+          <section className="w-full space-y-6">
+            <HealthFactorSummary
+              collateralCurrency={collateralCurrency}
+              debtCurrency={debtCurrency}
+            />
           </section>
           <section className="w-full md:w-1/2 space-y-6">
             <CollateralSection
