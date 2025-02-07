@@ -3,10 +3,14 @@ import { TokenInputSection } from "@/components/token-input-section/token-input-
 import { Label } from "@/components/ui/label";
 import { usePositionStore } from "@/stores/position-store";
 
-export function CollateralSection() {
+interface CollateralSectionProps {
+  selectedCurrency: string;
+  onSelectCurrency: (currency: string) => void;
+}
+
+export function CollateralSection({ selectedCurrency, onSelectCurrency }: CollateralSectionProps) {
   const [tokenQuantity, setTokenQuantity] = useState(0);
   const [tokenPrice, setTokenPrice] = useState(1500);
-  const [selectedCurrency, setSelectedCurrency] = useState("WETH");
   const [usdValue, setUsdValue] = useState(0);
   const { collateral } = usePositionStore();
 
@@ -32,7 +36,7 @@ export function CollateralSection() {
       </Label>
       <TokenInputSection
         currency={selectedCurrency}
-        onSelectCurrency={setSelectedCurrency}
+        onSelectCurrency={onSelectCurrency}
         tokenQuantity={tokenQuantity}
         onTokenQuantityChange={handleTokenQuantityChange}
         collateralValue={collateral.positionValue}

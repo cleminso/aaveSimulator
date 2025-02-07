@@ -3,10 +3,14 @@ import { TokenInputSection } from "./token-input-section/token-input-section";
 import { Label } from "@/components/ui/label";
 import { usePositionStore } from "@/stores/position-store";
 
-export function DebtSection() {
+interface DebtSectionProps {
+  selectedCurrency: string;
+  onSelectCurrency: (currency: string) => void;
+}
+
+export function DebtSection({ selectedCurrency, onSelectCurrency }: DebtSectionProps) {
   const [tokenQuantity, setTokenQuantity] = useState(0);
   const [tokenPrice, setTokenPrice] = useState(1500);
-  const [selectedCurrency, setSelectedCurrency] = useState("USDC");
   const { debt } = usePositionStore();
 
   const handleTokenQuantityChange = (value: number) => {
@@ -32,7 +36,7 @@ export function DebtSection() {
       <TokenInputSection
         mode="debt"
         currency={selectedCurrency}
-        onSelectCurrency={setSelectedCurrency}
+        onSelectCurrency={onSelectCurrency}
         tokenQuantity={tokenQuantity}
         onTokenQuantityChange={handleTokenQuantityChange}
         usdValue={debt.positionValue}

@@ -9,20 +9,24 @@ import { usePositionStore } from "@/stores/position-store";
 import { calculateHealthFactor, getLiquidationThreshold } from "@/libs/currency"; // Updated import path!
 import { useEffect, useState } from "react";
 
-export function HealthFactorSummary() {
+interface HealthFactorSummaryProps {
+  collateralCurrency: string;
+  debtCurrency: string;
+}
+
+export function HealthFactorSummary({ collateralCurrency, debtCurrency }: HealthFactorSummaryProps) {
   const { collateral, debt } = usePositionStore();
   const [healthFactorValue, setHealthFactorValue] = useState<number>(1); // Placeholder value for development
-  const [selectedCurrency, setSelectedCurrency] = useState<string>("WETH"); // Default currency
 
   useEffect(() => {
-    const liquidationThreshold = getLiquidationThreshold(selectedCurrency);
+    const liquidationThreshold = getLiquidationThreshold(collateralCurrency);
     const newHealthFactorValue = calculateHealthFactor(
       collateral.positionValue,
       debt.positionValue,
       liquidationThreshold
     );
     setHealthFactorValue(newHealthFactorValue);
-  }, [collateral.positionValue, debt.positionValue, selectedCurrency]);
+  }, [collateral.positionValue, debt.positionValue, collateralCurrency]);
 
   const getTooltipTriggerBackgroundColor = (value: number) => {
     if (value <= 1.1) return "bg-error";
