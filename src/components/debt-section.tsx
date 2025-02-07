@@ -8,10 +8,12 @@ interface DebtSectionProps {
   onSelectCurrency: (currency: string) => void;
 }
 
-export function DebtSection({ selectedCurrency, onSelectCurrency }: DebtSectionProps) {
+export function DebtSection({
+  selectedCurrency,
+  onSelectCurrency,
+}: DebtSectionProps) {
   const [usdValue, setUsdValue] = useState(0); // ADD
-  const { debt, collateral } = usePositionStore(); // collateral is here to avoid unused import warning, can be removed if needed
-
+  const { debt } = usePositionStore();
   const handleTokenQuantityChange = (value: number) => {
     debt.setTokenQuantity(value);
     const newValue = value * debt.tokenPrice;
