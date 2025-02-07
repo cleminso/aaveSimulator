@@ -4,7 +4,7 @@ import { Label } from "@/components/ui/label";
 import { usePositionStore } from "@/stores/position-store";
 
 interface CollateralSectionProps {
-  selectedCurrency: string;
+  selectedCurrency: string | undefined;
   onSelectCurrency: (currency: string) => void;
 }
 
