@@ -23,6 +23,7 @@ export function CollateralSection({ selectedCurrency, onSelectCurrency }: Collat
 
   const handleTokenPriceChange = (value: number) => {
     setTokenPrice(value);
+    setUsdValue(tokenQuantity * value); // ADD THIS LINE
     collateral.setPositionValue(tokenQuantity * value);
   };
 
