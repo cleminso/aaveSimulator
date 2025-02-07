@@ -151,7 +151,7 @@ export const getMaxLTV = (currencyName: string): number | undefined => {
   if (!param) {
     return undefined;
   }
-  return parseFloat(param.LTV);
+  return param.LTV;
 };
 
 // Run validation in development
