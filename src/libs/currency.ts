@@ -14,23 +14,6 @@ export interface Currency {
 
 export type CurrencyMode = "collateral" | "debt";
 
-/**
- * Validates if a parameter matches the AaveParameter interface structure
- * @param param - Parameter to validate
- * @returns boolean indicating if the parameter is valid
- */
-function isValidAaveParameter(param: unknown): param is AaveParameter {
-  if (!param || typeof param !== "object") return false;
-  const p = param as Partial<AaveParameter>;
-  return (
-    typeof p.name === "string" &&
-    typeof p["Collateral Enabled"] === "boolean" &&
-    typeof p["Borrowing Enabled"] === "boolean" &&
-    typeof p["Liquidation Threshold"] === "string" &&
-    typeof p.LTV === "string" &&
-    typeof p["Variable Borrow Rate"] === "string"
-  );
-}
 const isStrictlyTrue = (value: any): boolean => value === true;
 
 /**
