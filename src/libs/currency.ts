@@ -158,7 +158,11 @@ export const getCurrentLTV = (totalBorrowed: number, collateralValue: number): n
   if (collateralValue === 0) {
     return NaN;
   }
-  return (totalBorrowed / collateralValue) * 100;
+  let calculatedLTV = (totalBorrowed / collateralValue) * 100;
+  if (calculatedLTV > 100) {
+    return 100;
+  }
+  return calculatedLTV;
 };
 
 // Run validation in development
