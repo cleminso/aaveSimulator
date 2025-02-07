@@ -19,7 +19,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-import type { Currency, CurrencyMode } from "@/libs/currency";
+import type { CurrencyMode } from "@/libs/currency";
 import { getFilteredCurrencies } from "@/libs/currency";
 
 interface CurrencySelectorProps {
