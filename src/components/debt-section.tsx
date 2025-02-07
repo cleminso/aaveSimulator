@@ -11,17 +11,20 @@ interface DebtSectionProps {
 export function DebtSection({ selectedCurrency, onSelectCurrency }: DebtSectionProps) {
   const [tokenQuantity, setTokenQuantity] = useState(0);
   const [tokenPrice, setTokenPrice] = useState(1500);
+  const [usdValue, setUsdValue] = useState(0); // ADD
   const { debt } = usePositionStore();
 
   const handleTokenQuantityChange = (value: number) => {
     setTokenQuantity(value);
     const newValue = value * tokenPrice;
+    setUsdValue(newValue); // ADD
     debt.setPositionValue(newValue);
   };
 
   const handleTokenPriceChange = (value: number) => {
     setTokenPrice(value);
     const newValue = tokenQuantity * value;
+    setUsdValue(newValue); // ADD THIS LINE
     debt.setPositionValue(newValue);
   };
 
@@ -39,7 +42,7 @@ export function DebtSection({ selectedCurrency, onSelectCurrency }: DebtSectionP
         onSelectCurrency={onSelectCurrency}
         tokenQuantity={tokenQuantity}
         onTokenQuantityChange={handleTokenQuantityChange}
-        usdValue={debt.positionValue}
+        usdValue={usdValue} // UPDATE
         collateralValue={0}
         tokenPrice={tokenPrice}
         onTokenPriceChange={handleTokenPriceChange}
