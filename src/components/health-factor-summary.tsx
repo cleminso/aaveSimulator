@@ -11,6 +11,7 @@ import {
   getLiquidationThreshold,
   getMaxLTV,
   getCurrentLTV,
+  getLiquidationThresholdPrice
 } from "@/libs/currency"; // Updated import path!
 import { useEffect, useState } from "react";
 
@@ -27,6 +28,7 @@ export function HealthFactorSummary({
   const [healthFactorValue, setHealthFactorValue] = useState<number>(NaN); // Initialize to NaN
   const [maxLTV, setMaxLTV] = useState<number | undefined>(undefined);
   const [currentLTV, setCurrentLTV] = useState<number>(NaN); // Initialize to NaN
+  const [liquidationThresholdPriceValue, setLiquidationThresholdPriceValue] = useState<number>(0);
 
   useEffect(() => {
     if (
@@ -50,12 +52,20 @@ export function HealthFactorSummary({
 
         const newCurrentLTV = getCurrentLTV(debt.positionValue, collateral.positionValue);
         setCurrentLTV(newCurrentLTV);
+
+        const newLiquidationThresholdPrice = getLiquidationThresholdPrice(
+          debt.positionValue,
+          collateral.tokenQuantity,
+          liquidationThreshold
+        );
+        setLiquidationThresholdPriceValue(newLiquidationThresholdPrice);
       } catch (error) {
         console.error("Error fetching liquidation threshold:", error);
       }
     } else {
       setHealthFactorValue(NaN); // Set to NaN when conditions are not met
       setCurrentLTV(NaN); // Set to NaN when conditions are not met
+      setLiquidationThresholdPriceValue(0);
     }
   }, [
     collateral.positionValue,
@@ -155,7 +165,10 @@ export function HealthFactorSummary({
             Liquidation Threshold Price
           </CardTitle>
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
-            $
+            ${liquidationThresholdPriceValue.toLocaleString("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            })}
           </CardContent>
         </Card>
         <Card className="w-full md:w-1/3 h-[71px] bg-secondary">
