@@ -17,7 +17,7 @@ interface HealthFactorSummaryProps {
 
 export function HealthFactorSummary({ collateralCurrency, debtCurrency }: HealthFactorSummaryProps) {
   const { collateral, debt } = usePositionStore();
-  const [healthFactorValue, setHealthFactorValue] = useState<number>(1); // Placeholder value for development
+  const [healthFactorValue, setHealthFactorValue] = useState<number>(NaN); // Initialize to NaN
 
   useEffect(() => {
     if (
@@ -40,7 +40,7 @@ export function HealthFactorSummary({ collateralCurrency, debtCurrency }: Health
           console.error("Error fetching liquidation threshold:", error);
         }
     } else {
-        setHealthFactorValue(1); // Reset to default or placeholder when conditions are not met
+        setHealthFactorValue(NaN); // Set to NaN when conditions are not met
       }
   }, [collateral.positionValue, debt.positionValue, collateralCurrency, debtCurrency, collateral.tokenQuantity, debt.tokenQuantity, collateral.tokenPrice, debt.tokenPrice]); // ADD tokenQuantity and tokenPrice from both sections to dependency array
 
@@ -70,7 +70,7 @@ export function HealthFactorSummary({ collateralCurrency, debtCurrency }: Health
               className={`flex items-center justify-center h-[35px] w-fit px-2 rounded-[2px] ${getTooltipTriggerBackgroundColor(healthFactorValue)}`}
             >
               <span className="font-mono text-xl text-primary">
-                {collateralCurrency ? healthFactorValue.toFixed(2) : "--"} {/* Display "--" if no currency selected */}
+                {collateralCurrency && !isNaN(healthFactorValue) ? healthFactorValue.toFixed(2) : "--"} {/* Display "--" if no currency selected or healthFactorValue is NaN */}
               </span>
             </TooltipTrigger>
             <TooltipContent>
