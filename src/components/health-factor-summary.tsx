@@ -6,6 +6,7 @@ import {
 } from "@/components/ui/tooltip";
 
 import { usePositionStore } from "@/stores/position-store";
+import { PositionState } from "@/stores/position-store";
 import { calculateHealthFactor, getLiquidationThreshold } from "@/libs/currency"; // Updated import path!
 import { useEffect, useState } from "react";
 
@@ -19,22 +20,29 @@ export function HealthFactorSummary({ collateralCurrency, debtCurrency }: Health
   const [healthFactorValue, setHealthFactorValue] = useState<number>(1); // Placeholder value for development
 
   useEffect(() => {
-    if (collateralCurrency) { // Check if collateralCurrency is defined
-      try {
-        const liquidationThreshold = getLiquidationThreshold(collateralCurrency);
-        const newHealthFactorValue = calculateHealthFactor(
-          collateral.positionValue,
-          debt.positionValue,
-          liquidationThreshold
-        );
-        setHealthFactorValue(newHealthFactorValue);
-      } catch (error) {
-        console.error("Error fetching liquidation threshold:", error);
-      }
+    if (
+      collateralCurrency &&
+      debtCurrency &&
+      collateral.tokenQuantity > 0 && // Check if collateral tokenQuantity > 0
+      debt.tokenQuantity > 0 && // Check if debt tokenQuantity > 0
+      collateral.tokenPrice !== 0 && // Check if collateral tokenPrice !== 0
+      debt.tokenPrice !== 0 // Check if debt tokenPrice !== 0
+    ) {
+      try { // Check if debt tokenPrice !== 0
+          const liquidationThreshold = getLiquidationThreshold(collateralCurrency);
+          const newHealthFactorValue = calculateHealthFactor(
+            collateral.positionValue,
+            debt.positionValue,
+            liquidationThreshold
+          );
+          setHealthFactorValue(newHealthFactorValue);
+        } catch (error) {
+          console.error("Error fetching liquidation threshold:", error);
+        }
     } else {
-      setHealthFactorValue(1); // Reset to default or placeholder when no currency is selected
-    }
-  }, [collateral.positionValue, debt.positionValue, collateralCurrency, debtCurrency]);
+        setHealthFactorValue(1); // Reset to default or placeholder when conditions are not met
+      }
+  }, [collateral.positionValue, debt.positionValue, collateralCurrency, debtCurrency, collateral.tokenQuantity, debt.tokenQuantity, collateral.tokenPrice, debt.tokenPrice]); // ADD tokenQuantity and tokenPrice from both sections to dependency array
 
   const getTooltipTriggerBackgroundColor = (value: number) => {
     if (value <= 1.1) return "bg-error";

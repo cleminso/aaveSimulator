@@ -5,12 +5,12 @@ import { Label } from "@/components/ui/label";
 import { CurrencyMode } from "@/libs/currency";
 
 export interface TokenInputSectionProps {
-  currency: string;
+  currency: string | undefined; // currency can be undefined
   onSelectCurrency: (currency: string) => void;
   tokenQuantity: number;
   onTokenQuantityChange: (value: number) => void;
   collateralValue?: number;
-  usdValue?: number;
+  usdValue: number; // usdValue is now required
   tokenPrice: number;
   onTokenPriceChange: (value: number) => void;
   mode: CurrencyMode; // ADD
@@ -38,7 +38,7 @@ export function TokenInputSection({
       <div className="space-y-3">
         <div className="flex space-x-4">
           <div className="w-2/3 space-y-1">
-            <Label htmlFor="token-quantity">{`${currency} Quantity`}</Label>
+            <Label htmlFor="token-quantity">{`${currency || 'Token'} Quantity`}</Label> {/* Display 'Token' if currency is undefined */}
             <Input
               id="token-quantity"
               type="number"
@@ -70,7 +70,7 @@ export function TokenInputSection({
       <div className="space-y-3">
         <div className="flex space-x-4">
           <div className="w-full space-y-1">
-            <Label htmlFor="token-price">{`${currency} Price (USD)`}</Label>
+            <Label htmlFor="token-price">{`${currency || 'Token'} Price (USD)`}</Label> {/* Display 'Token' if currency is undefined */}
             <Input
               id="token-price"
               type="number"

@@ -9,21 +9,19 @@ interface DebtSectionProps {
 }
 
 export function DebtSection({ selectedCurrency, onSelectCurrency }: DebtSectionProps) {
-  const [tokenQuantity, setTokenQuantity] = useState(0);
-  const [tokenPrice, setTokenPrice] = useState(1500);
   const [usdValue, setUsdValue] = useState(0); // ADD
-  const { debt } = usePositionStore();
+  const { debt, collateral } = usePositionStore(); // collateral is here to avoid unused import warning, can be removed if needed
 
   const handleTokenQuantityChange = (value: number) => {
-    setTokenQuantity(value);
-    const newValue = value * tokenPrice;
+    debt.setTokenQuantity(value);
+    const newValue = value * debt.tokenPrice;
     setUsdValue(newValue); // ADD
     debt.setPositionValue(newValue);
   };
 
   const handleTokenPriceChange = (value: number) => {
-    setTokenPrice(value);
-    const newValue = tokenQuantity * value;
+    debt.setTokenPrice(value);
+    const newValue = debt.tokenQuantity * value;
     setUsdValue(newValue); // ADD THIS LINE
     debt.setPositionValue(newValue);
   };
@@ -40,11 +38,11 @@ export function DebtSection({ selectedCurrency, onSelectCurrency }: DebtSectionP
         mode="debt"
         currency={selectedCurrency}
         onSelectCurrency={onSelectCurrency}
-        tokenQuantity={tokenQuantity}
+        tokenQuantity={debt.tokenQuantity} // Use tokenQuantity from store
         onTokenQuantityChange={handleTokenQuantityChange}
         usdValue={usdValue} // UPDATE
         collateralValue={0}
-        tokenPrice={tokenPrice}
+        tokenPrice={debt.tokenPrice} // Use tokenPrice from store
         onTokenPriceChange={handleTokenPriceChange}
       />
     </div>
