@@ -184,6 +184,17 @@ export const getAvailableToBorrow = (
   return (collateralValue * maxLTV) - totalBorrowed;
 };
 
+export const getBorrowingCapacity = (
+  availableToBorrow: number,
+  collateralValue: number,
+  maxLTV: number
+): number => {
+  if (collateralValue === 0 || maxLTV === 0) {
+    return 0;
+  }
+  return (availableToBorrow / (collateralValue * maxLTV)) * 100;
+};
+
 // Run validation in development
 if (process.env.NODE_ENV === "development") {
   validateCurrencyFiltering();

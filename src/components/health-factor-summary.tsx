@@ -12,7 +12,8 @@ import {
   getMaxLTV,
   getCurrentLTV,
   getLiquidationThresholdPrice,
-  getAvailableToBorrow
+  getAvailableToBorrow,
+  getBorrowingCapacity
 } from "@/libs/currency"; // Updated import path!
 import { useEffect, useState } from "react";
 
@@ -31,6 +32,7 @@ export function HealthFactorSummary({
   const [currentLTV, setCurrentLTV] = useState<number>(NaN); // Initialize to NaN
   const [liquidationThresholdPriceValue, setLiquidationThresholdPriceValue] = useState<number>(0);
   const [availableToBorrowValue, setAvailableToBorrowValue] = useState<number>(0);
+  const [borrowingCapacityValue, setBorrowingCapacityValue] = useState<number>(NaN); // Initialize to NaN
 
   useEffect(() => {
     if (
@@ -70,6 +72,13 @@ export function HealthFactorSummary({
             debt.positionValue
           );
           setAvailableToBorrowValue(newAvailableToBorrow);
+
+          const newBorrowingCapacity = getBorrowingCapacity(
+            newAvailableToBorrow,
+            collateral.positionValue,
+            newMaxLTV
+          );
+          setBorrowingCapacityValue(newBorrowingCapacity);
         }
       } catch (error) {
         console.error("Error fetching liquidation threshold:", error);
@@ -79,6 +88,7 @@ export function HealthFactorSummary({
       setCurrentLTV(NaN); // Set to NaN when conditions are not met
       setLiquidationThresholdPriceValue(0);
       setAvailableToBorrowValue(0);
+      setBorrowingCapacityValue(0); // Set to 0 when conditions are not met
     }
   }, [
     collateral.positionValue,
@@ -200,7 +210,7 @@ export function HealthFactorSummary({
             Borrowing Capacity
           </CardTitle>
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
-            80%
+            {borrowingCapacityValue === 0 ? "0.00%" : `${borrowingCapacityValue.toFixed(2)}%`}
           </CardContent>
         </Card>
       </div>
