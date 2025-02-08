@@ -214,7 +214,7 @@ export function HealthFactorSummary({
             <div className="flex items-center space-x-2">
               <Progress
                 value={borrowingCapacityValue}
-                className="bg-primary rounded-[4px] h-[25px]"
+                className="bg-primary rounded-[4px] h-[25px] border"
                 indicatorClassName="bg-accent-secondary h-[25px]"
               />
               <span>
