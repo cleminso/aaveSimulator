@@ -18,3 +18,16 @@
         --border: #6b7280;
     }
 }
+
+.tooltip-trigger-wrapper .bg-error {
+    background-color: #F87171;
+}
+.tooltip-trigger-wrapper .bg-accent-secondary {
+    background-color: #FBBF24;
+}
+.tooltip-trigger-wrapper .bg-success {
+    background-color: #10B981;
+}
+.tooltip-trigger-wrapper .bg-secondary {
+    background-color: #D1D5DB;
+}

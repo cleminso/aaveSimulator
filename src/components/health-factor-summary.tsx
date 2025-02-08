@@ -141,16 +141,18 @@ export function HealthFactorSummary({
         </h2>
         <div className="ml-1">
           <Tooltip>
-            <TooltipTrigger
-              className={`flex items-center justify-center h-[35px] w-fit px-2 rounded-[2px] ${getTooltipTriggerBackgroundColor(healthFactorValue)}`}
-            >
-              <span className="font-mono text-xl text-primary">
-                {collateralCurrency && !isNaN(healthFactorValue)
-                  ? healthFactorValue.toFixed(2)
-                  : "--"}{" "}
-                {/* Display "--" if no currency selected or healthFactorValue is NaN */}
-              </span>
-            </TooltipTrigger>
+            <div className="tooltip-trigger-wrapper">
+              <TooltipTrigger
+                className={`flex items-center justify-center h-[35px] w-fit px-2 rounded-[2px] ${getTooltipTriggerBackgroundColor(healthFactorValue)}`}
+              >
+                <span className="font-mono text-xl text-primary-foreground">
+                  {collateralCurrency && !isNaN(healthFactorValue)
+                    ? healthFactorValue.toFixed(2)
+                    : "--"}{" "}
+                  {/* Display "--" if no currency selected or healthFactorValue is NaN */}
+                </span>
+              </TooltipTrigger>
+            </div>
             <TooltipContent>
               {getTooltipMessage(healthFactorValue)}
             </TooltipContent>
