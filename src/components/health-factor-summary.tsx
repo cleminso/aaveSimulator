@@ -213,7 +213,7 @@ export function HealthFactorSummary({
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
             <div className="flex items-center space-x-2">
               <Progress
-                value={100 - borrowingCapacityValue}
+                value={borrowingCapacityValue}
                 className="bg-primary rounded-[4px] h-[25px] border"
                 indicatorClassName="bg-accent-secondary h-[25px]"
               />
