@@ -79,7 +79,7 @@ export function HealthFactorSummary({
             collateral.positionValue,
             newMaxLTV
           );
-          setBorrowingCapacityValue(newBorrowingCapacity);
+          setBorrowingCapacityValue(Math.max(0, Math.min(100, newBorrowingCapacity)));
         }
       } catch (error) {
         console.error("Error fetching liquidation threshold:", error);
