@@ -4,6 +4,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Progress } from "@/components/ui/progress";
 
 import { usePositionStore } from "@/stores/position-store";
 import {
@@ -210,7 +211,16 @@ export function HealthFactorSummary({
             Borrowing Capacity
           </CardTitle>
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
-            {borrowingCapacityValue === 0 ? "0.00%" : `${borrowingCapacityValue.toFixed(2)}%`}
+            <div className="flex items-center space-x-2">
+              <Progress
+                value={borrowingCapacityValue}
+                className="bg-primary rounded-[4px] h-[25px]"
+                indicatorClassName="bg-accent-secondary h-[25px]"
+              />
+              <span>
+                {borrowingCapacityValue === 0 ? "0.00%" : `${borrowingCapacityValue.toFixed(2)}%`}
+              </span>
+            </div>
           </CardContent>
         </Card>
       </div>
