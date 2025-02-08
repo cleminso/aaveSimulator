@@ -14,7 +14,7 @@ import {
   getCurrentLTV,
   getLiquidationThresholdPrice,
   getAvailableToBorrow,
-  getBorrowingCapacity
+  getBorrowingCapacity,
 } from "@/libs/currency"; // Updated import path!
 import { useEffect, useState } from "react";
 
@@ -31,9 +31,12 @@ export function HealthFactorSummary({
   const [healthFactorValue, setHealthFactorValue] = useState<number>(NaN); // Initialize to NaN
   const [maxLTV, setMaxLTV] = useState<number | undefined>(undefined);
   const [currentLTV, setCurrentLTV] = useState<number>(NaN); // Initialize to NaN
-  const [liquidationThresholdPriceValue, setLiquidationThresholdPriceValue] = useState<number>(0);
-  const [availableToBorrowValue, setAvailableToBorrowValue] = useState<number>(0);
-  const [borrowingCapacityValue, setBorrowingCapacityValue] = useState<number>(NaN); // Initialize to NaN
+  const [liquidationThresholdPriceValue, setLiquidationThresholdPriceValue] =
+    useState<number>(0);
+  const [availableToBorrowValue, setAvailableToBorrowValue] =
+    useState<number>(0);
+  const [borrowingCapacityValue, setBorrowingCapacityValue] =
+    useState<number>(NaN); // Initialize to NaN
 
   useEffect(() => {
     if (
@@ -55,13 +58,16 @@ export function HealthFactorSummary({
         );
         setHealthFactorValue(newHealthFactorValue);
 
-        const newCurrentLTV = getCurrentLTV(debt.positionValue, collateral.positionValue);
+        const newCurrentLTV = getCurrentLTV(
+          debt.positionValue,
+          collateral.positionValue,
+        );
         setCurrentLTV(newCurrentLTV);
 
         const newLiquidationThresholdPrice = getLiquidationThresholdPrice(
           debt.positionValue,
           collateral.tokenQuantity,
-          liquidationThreshold
+          liquidationThreshold,
         );
         setLiquidationThresholdPriceValue(newLiquidationThresholdPrice);
 
@@ -70,16 +76,18 @@ export function HealthFactorSummary({
           const newAvailableToBorrow = getAvailableToBorrow(
             collateral.positionValue,
             newMaxLTV,
-            debt.positionValue
+            debt.positionValue,
           );
           setAvailableToBorrowValue(newAvailableToBorrow);
 
           const newBorrowingCapacity = getBorrowingCapacity(
             newAvailableToBorrow,
             collateral.positionValue,
-            newMaxLTV
+            newMaxLTV,
           );
-          setBorrowingCapacityValue(Math.max(0, Math.min(100, newBorrowingCapacity)));
+          setBorrowingCapacityValue(
+            Math.max(0, Math.min(100, newBorrowingCapacity)),
+          );
         }
       } catch (error) {
         console.error("Error fetching liquidation threshold:", error);
@@ -179,7 +187,8 @@ export function HealthFactorSummary({
             Available to Borrow:
           </CardTitle>
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
-            ${availableToBorrowValue.toLocaleString("en-US", {
+            $
+            {availableToBorrowValue.toLocaleString("en-US", {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}
@@ -192,7 +201,8 @@ export function HealthFactorSummary({
             Liquidation Threshold Price
           </CardTitle>
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
-            ${liquidationThresholdPriceValue.toLocaleString("en-US", {
+            $
+            {liquidationThresholdPriceValue.toLocaleString("en-US", {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}
@@ -203,7 +213,8 @@ export function HealthFactorSummary({
             Current LTV / Max LTV
           </CardTitle>
           <CardContent className="p-2 pt-1.5 text-xl font-normal font-mono tracking-tighter leading-[25px]">
-            {isNaN(currentLTV) ? "--" : `${currentLTV.toFixed(2)}%`} / {maxLTV !== undefined ? `${(maxLTV * 100).toFixed(2)}%` : "--"}
+            {isNaN(currentLTV) ? "--" : `${currentLTV.toFixed(2)}%`} /{" "}
+            {maxLTV !== undefined ? `${(maxLTV * 100).toFixed(2)}%` : "--"}
           </CardContent>
         </Card>
         <Card className="w-full md:w-1/3 h-[71px] bg-secondary">
@@ -218,7 +229,9 @@ export function HealthFactorSummary({
                 indicatorClassName="bg-accent-secondary h-[25px]"
               />
               <span>
-                {borrowingCapacityValue === 0 ? "0.00%" : `${borrowingCapacityValue.toFixed(2)}%`}
+                {borrowingCapacityValue === 0
+                  ? "0.00%"
+                  : `${borrowingCapacityValue.toFixed(2)}%`}
               </span>
             </div>
           </CardContent>
