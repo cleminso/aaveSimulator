@@ -1,33 +1,8 @@
-export async function fetchGraphQLData(query: string, variables?: Record<string, any>) {
-  const apiUrl = process.env.AAVE_SUBGRAPH_URL;
+import { GraphQLClient, gql } from "graphql-request";
 
-  if (!apiUrl) {
-    throw new Error("AAVE_SUBGRAPH_URL environment variable is not defined.");
-  }
+const client = new GraphQLClient("https://community-subgraphs.graph-eu.p2pify.com/3cdc87cad8efaec754312b0c6f2b9dd7/community-aave-v3");
 
-  try {
-    const response = await fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ query, variables }),
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-
-    if (data.errors) {
-      console.error("GraphQL errors:", data.errors);
-      throw new Error("GraphQL query returned errors");
-    }
-
-    return data.data;
-  } catch (error) {
-    console.error("Error fetching GraphQL ", error);
-    throw new Error("Failed to fetch GraphQL data");
-  }
-}
+export const fetchGraphQLData = async (query: string, variables: Record<string, any>) => {
+  const data = await client.request(gql`${query}`, variables);
+  return data;
+};
