@@ -38,7 +38,8 @@ export function TokenInputSection({
       <div className="space-y-3">
         <div className="flex space-x-4">
           <div className="w-2/3 space-y-1">
-            <Label htmlFor="token-quantity">{`${currency || 'Token'} Quantity`}</Label> {/* Display 'Token' if currency is undefined */}
+            <Label htmlFor="token-quantity">{`${currency || "Token"} Quantity`}</Label>{" "}
+            {/* Display 'Token' if currency is undefined */}
             <Input
               id="token-quantity"
               type="number"
@@ -70,7 +71,8 @@ export function TokenInputSection({
       <div className="space-y-3">
         <div className="flex space-x-4">
           <div className="w-full space-y-1">
-            <Label htmlFor="token-price">{`${currency || 'Token'} Price (USD)`}</Label> {/* Display 'Token' if currency is undefined */}
+            <Label htmlFor="token-price">{`${currency || "Token"} Price (USD)`}</Label>{" "}
+            {/* Display 'Token' if currency is undefined */}
             <Input
               id="token-price"
               type="number"
@@ -81,7 +83,7 @@ export function TokenInputSection({
           </div>
         </div>
         <Slider
-          defaultValue={[1500]}
+          defaultValue={[0]}
           max={20000}
           step={1}
           onValueChange={(value) => onTokenPriceChange(value[0])}
