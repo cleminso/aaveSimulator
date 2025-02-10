@@ -151,10 +151,13 @@ export const getMaxLTV = (currencyName: string): number | undefined => {
   if (!param) {
     return undefined;
   }
-  return param.LTV;
+  return parseFloat(param.LTV);
 };
 
-export const getCurrentLTV = (totalBorrowed: number, collateralValue: number): number => {
+export const getCurrentLTV = (
+  totalBorrowed: number,
+  collateralValue: number,
+): number => {
   if (collateralValue === 0) {
     return NaN;
   }
@@ -168,7 +171,7 @@ export const getCurrentLTV = (totalBorrowed: number, collateralValue: number): n
 export const getLiquidationThresholdPrice = (
   totalBorrowed: number,
   totalCollateralAmount: number,
-  liquidationThreshold: number
+  liquidationThreshold: number,
 ): number => {
   if (totalCollateralAmount === 0 || liquidationThreshold === 0) {
     return 0;
@@ -179,15 +182,15 @@ export const getLiquidationThresholdPrice = (
 export const getAvailableToBorrow = (
   collateralValue: number,
   maxLTV: number,
-  totalBorrowed: number
+  totalBorrowed: number,
 ): number => {
-  return (collateralValue * maxLTV) - totalBorrowed;
+  return collateralValue * maxLTV - totalBorrowed;
 };
 
 export const getBorrowingCapacity = (
   availableToBorrow: number,
   collateralValue: number,
-  maxLTV: number
+  maxLTV: number,
 ): number => {
   if (collateralValue === 0 || maxLTV === 0) {
     return 0;
