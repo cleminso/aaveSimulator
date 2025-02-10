@@ -59,7 +59,7 @@ export function CurrencySelector({
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className={cn("w-full p-0", className)}>
+      <PopoverContent className={cn("w-full p-0 bg-zinc-100", className)}>
         <Command>
           <CommandInput placeholder="Search currency..." />
           <CommandList>
