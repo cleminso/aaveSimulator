@@ -139,7 +139,7 @@ export function TokenInputSection({
               <span>{`${currency || "Token"} Price (USD)`}</span>
               {/* Reserve space for the reset text, even when hidden */}
               <span
-                className={`ml-2 text-xs text-blue-500 cursor-pointer ${
+                className={`ml-2 text-sm text-blue-600 cursor-pointer ${
                   showResetText && currency ? "" : "invisible"
                 }`}
                 onClick={() => {
