@@ -1,5 +1,7 @@
 import { MainSection } from "@/components/main-section";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ReactComponent as TwitterIcon } from "@/assets/twitter.svg";
+import { ReactComponent as GithubIcon } from "@/assets/github.svg";
 
 export default function App() {
   return (
@@ -17,8 +19,8 @@ export default function App() {
             </p>
           </div>
           <div className="flex items-center space-x-4">
-            <img src="@/assets/twitter.svg" alt="Twitter" width="16" height="16" />
-            <img src="@/assets/github.svg" alt="GitHub" width="16" height="16" />
+            <TwitterIcon width="16" height="16" />
+            <GithubIcon width="16" height="16" />
           </div>
         </div>
       </div>
