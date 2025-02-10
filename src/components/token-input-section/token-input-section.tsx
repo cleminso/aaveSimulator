@@ -82,7 +82,7 @@ export function TokenInputSection({
   }, [tokenQuantity, tokenPrice]);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       <CurrencySelector
         onSelectCurrency={handleCurrencySelect}
         className="w-full"
