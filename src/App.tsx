@@ -19,7 +19,7 @@ export default function App() {
             </p>
           </div>
           <div className="flex items-center space-x-4">
-            <img src={TwitterIcon} width="24" height="23" />
+            <a href="https://x.com/cleminso" target="_blank" rel="noopener noreferrer"><img src={TwitterIcon} width="24" height="23" /></a>
             <img src={GithubIcon} width="24" height="23" />
           </div>
         </div>
