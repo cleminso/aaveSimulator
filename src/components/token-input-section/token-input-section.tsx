@@ -7,6 +7,8 @@ import { useState, useEffect, useCallback } from "react";
 import { fetchTokenPrice } from "@/libs/api";
 import { tokenAddresses } from "@/libs/token-address";
 import { usePositionStore } from "@/stores/position-store"; // Import the store
+import { RefreshCcw } from "lucide-react"; // Import the icon
+import { Button } from "@/components/ui/button"; // Import the button
 
 export interface TokenInputSectionProps {
   currency: string | undefined; // currency can be undefined
@@ -40,6 +42,7 @@ export function TokenInputSection({
   const [quantitySliderValue, setQuantitySliderValue] = useState<number>(tokenQuantity);
   const [priceSliderValue, setPriceSliderValue] = useState<number>(tokenPrice);
   const [loadingPrice, setLoadingPrice] = useState<boolean>(false); // State to track price loading
+  const [currentPriceValue, setCurrentPriceValue] = useState<number>(0); // ADD
 
   const handleCurrencySelect = useCallback(
     async (selectedCurrency: string) => {
@@ -51,6 +54,7 @@ export function TokenInputSection({
         if (fetchedPrice !== undefined) {
           onTokenPriceChange(fetchedPrice); // Update local state
           setPriceSliderValue(fetchedPrice); // Update slider
+          setCurrentPriceValue(fetchedPrice); // ADD
           if (mode === "collateral") {
             setCollateralTokenPrice(fetchedPrice); // Update store for collateral
           } else if (mode === "debt") {
@@ -119,7 +123,7 @@ export function TokenInputSection({
       </div>
       <div className="space-y-3">
         <div className="flex space-x-4">
-          <div className="w-full space-y-1">
+          <div className="w-full space-y-1 relative">
             <Label htmlFor="token-price">{`${currency || "Token"} Price (USD)`}</Label>{" "}
             {/* Display 'Token' if currency is undefined */}
             <Input
@@ -134,6 +138,17 @@ export function TokenInputSection({
               }}
               placeholder={`Enter ${currency} Price (USD)`}
             />
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute right-2 top-1/2 -translate-y-1/2 h-6 w-6 rounded-full"
+              onClick={() => {
+                onTokenPriceChange(currentPriceValue);
+                setPriceSliderValue(currentPriceValue);
+              }}
+            >
+              <RefreshCcw className="h-4 w-4" />
+            </Button>
           </div>
         </div>
         <Slider
