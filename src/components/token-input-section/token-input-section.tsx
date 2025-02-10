@@ -41,7 +41,7 @@ export function TokenInputSection({
   const [priceSliderValue, setPriceSliderValue] = useState<number>(tokenPrice);
   const [loadingPrice, setLoadingPrice] = useState<boolean>(false);
   const [currentPriceValue, setCurrentPriceValue] = useState<number>(0);
-  const [showResetText, setShowResetText] = useState(false); // ADD
+  const [showResetText, setShowResetText] = useState(false);
 
   const handleCurrencySelect = useCallback(
     async (selectedCurrency: string) => {
@@ -62,7 +62,7 @@ export function TokenInputSection({
         }
       }
       setLoadingPrice(false);
-      setShowResetText(false); // ADD: Hide reset text on new currency selection
+      setShowResetText(false);
     },
     [
       onSelectCurrency,
@@ -131,13 +131,13 @@ export function TokenInputSection({
           <div className="w-full space-y-1 relative">
             <Label htmlFor="token-price" className="flex items-center justify-between">
               <span>{`${currency || "Token"} Price (USD)`}</span>
-              {/* Conditionally render the reset text */}
               {showResetText && currency && (
                 <span
                   className="ml-2 text-sm text-blue-500 cursor-pointer"
                   onClick={() => {
                     onTokenPriceChange(currentPriceValue);
                     setPriceSliderValue(currentPriceValue);
+                    setShowResetText(false); // Hide the text after clicking
                   }}
                 >
                   Reset to current price
@@ -166,7 +166,6 @@ export function TokenInputSection({
           onValueChange={(value) => {
             setPriceSliderValue(value[0]);
             onTokenPriceChange(value[0]);
-            // Show reset text only if a currency is selected
             if (currency) {
               setShowResetText(true);
             }
