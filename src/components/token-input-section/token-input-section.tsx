@@ -7,8 +7,6 @@ import { useState, useEffect, useCallback } from "react";
 import { fetchTokenPrice } from "@/libs/api";
 import { tokenAddresses } from "@/libs/token-address";
 import { usePositionStore } from "@/stores/position-store"; // Import the store
-import { RefreshCcw } from "lucide-react"; // Import the icon
-import { Button } from "@/components/ui/button"; // Import the button
 
 export interface TokenInputSectionProps {
   currency: string | undefined; // currency can be undefined
@@ -124,8 +122,18 @@ export function TokenInputSection({
       <div className="space-y-3">
         <div className="flex space-x-4">
           <div className="w-full space-y-1 relative">
-            <Label htmlFor="token-price">{`${currency || "Token"} Price (USD)`}</Label>{" "}
-            {/* Display 'Token' if currency is undefined */}
+            <Label htmlFor="token-price" className="flex items-center justify-between">
+              <span>{`${currency || "Token"} Price (USD)`}</span>
+              <span
+                className="ml-2 text-sm text-blue-500 cursor-pointer"
+                onClick={() => {
+                  onTokenPriceChange(currentPriceValue);
+                  setPriceSliderValue(currentPriceValue);
+                }}
+              >
+                Reset to current price
+              </span>
+            </Label>
             <Input
               id="token-price"
               type="number"
@@ -138,17 +146,6 @@ export function TokenInputSection({
               }}
               placeholder={`Enter ${currency} Price (USD)`}
             />
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute right-2 top-1/2 -translate-y-1/2 h-6 w-6 rounded-full"
-              onClick={() => {
-                onTokenPriceChange(currentPriceValue);
-                setPriceSliderValue(currentPriceValue);
-              }}
-            >
-              <RefreshCcw className="h-4 w-4" />
-            </Button>
           </div>
         </div>
         <Slider
