@@ -113,7 +113,7 @@ export function TokenInputSection({
             <Input
               id="usd-value"
               type="number"
-              value={usdValue !== undefined ? usdValue : collateralValue || 0}
+              value={usdValue}
               disabled
             />
           </div>
