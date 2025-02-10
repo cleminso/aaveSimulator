@@ -6,18 +6,18 @@ import { CurrencyMode } from "@/libs/currency";
 import { useState, useEffect, useCallback } from "react";
 import { fetchTokenPrice } from "@/libs/api";
 import { tokenAddresses } from "@/libs/token-address";
-import { usePositionStore } from "@/stores/position-store"; // Import the store
+import { usePositionStore } from "@/stores/position-store";
 
 export interface TokenInputSectionProps {
-  currency: string | undefined; // currency can be undefined
+  currency: string | undefined;
   onSelectCurrency: (currency: string) => void;
   tokenQuantity: number;
   onTokenQuantityChange: (value: number) => void;
   collateralValue?: number;
-  usdValue: number; // usdValue is now required
+  usdValue: number;
   tokenPrice: number;
   onTokenPriceChange: (value: number) => void;
-  mode: CurrencyMode; // ADD
+  mode: CurrencyMode;
 }
 
 export function TokenInputSection({
@@ -29,7 +29,7 @@ export function TokenInputSection({
   usdValue,
   tokenPrice,
   onTokenPriceChange,
-  mode, // ADD
+  mode,
 }: TokenInputSectionProps) {
   const setCollateralTokenPrice = usePositionStore(
     (state) => state.collateral.setTokenPrice,
@@ -39,30 +39,38 @@ export function TokenInputSection({
   // State for slider values, synced with input values
   const [quantitySliderValue, setQuantitySliderValue] = useState<number>(tokenQuantity);
   const [priceSliderValue, setPriceSliderValue] = useState<number>(tokenPrice);
-  const [loadingPrice, setLoadingPrice] = useState<boolean>(false); // State to track price loading
-  const [currentPriceValue, setCurrentPriceValue] = useState<number>(0); // ADD
+  const [loadingPrice, setLoadingPrice] = useState<boolean>(false);
+  const [currentPriceValue, setCurrentPriceValue] = useState<number>(0);
+  const [showResetText, setShowResetText] = useState(false); // ADD
 
   const handleCurrencySelect = useCallback(
     async (selectedCurrency: string) => {
       onSelectCurrency(selectedCurrency);
-      setLoadingPrice(true); // Start loading
+      setLoadingPrice(true);
       const address = tokenAddresses[selectedCurrency];
       if (address) {
         const fetchedPrice = await fetchTokenPrice(address);
         if (fetchedPrice !== undefined) {
-          onTokenPriceChange(fetchedPrice); // Update local state
-          setPriceSliderValue(fetchedPrice); // Update slider
-          setCurrentPriceValue(fetchedPrice); // ADD
+          onTokenPriceChange(fetchedPrice);
+          setPriceSliderValue(fetchedPrice);
+          setCurrentPriceValue(fetchedPrice);
           if (mode === "collateral") {
-            setCollateralTokenPrice(fetchedPrice); // Update store for collateral
+            setCollateralTokenPrice(fetchedPrice);
           } else if (mode === "debt") {
-            setDebtTokenPrice(fetchedPrice); // Update store for debt
+            setDebtTokenPrice(fetchedPrice);
           }
         }
       }
-      setLoadingPrice(false); // End loading regardless of success or failure
+      setLoadingPrice(false);
+      setShowResetText(false); // ADD: Hide reset text on new currency selection
     },
-    [onSelectCurrency, onTokenPriceChange, setCollateralTokenPrice, setDebtTokenPrice, mode],
+    [
+      onSelectCurrency,
+      onTokenPriceChange,
+      setCollateralTokenPrice,
+      setDebtTokenPrice,
+      mode,
+    ],
   );
 
   useEffect(() => {
@@ -73,26 +81,25 @@ export function TokenInputSection({
   return (
     <div className="space-y-4">
       <CurrencySelector
-        onSelectCurrency={handleCurrencySelect} // Use handleCurrencySelect
+        onSelectCurrency={handleCurrencySelect}
         className="w-full"
         data-testid="currency-selector"
-        mode={mode} // UPDATE
+        mode={mode}
       />
       <div className="space-y-3">
         <div className="flex space-x-4">
           <div className="w-2/3 space-y-1">
-            <Label htmlFor="token-quantity">{`${currency || "Token"} Quantity`}</Label>{" "}
-            {/* Display 'Token' if currency is undefined */}
+            <Label htmlFor="token-quantity">{`${currency || "Token"} Quantity`}</Label>
             <Input
               id="token-quantity"
               type="number"
-              value={tokenQuantity} // Controlled input
+              value={tokenQuantity}
               onChange={(e) => {
                 const value = Number(e.target.value);
                 if (value < 0) return;
-                setQuantitySliderValue(value); // Sync slider with input
+                setQuantitySliderValue(value);
                 if (!isNaN(value)) {
-                  setQuantitySliderValue(value); // Sync slider with input
+                  setQuantitySliderValue(value);
                 }
                 onTokenQuantityChange(Number(value.toFixed(8)));
               }}
@@ -109,12 +116,12 @@ export function TokenInputSection({
           </div>
         </div>
         <Slider
-          defaultValue={[quantitySliderValue]} // Use state value
-          value={[quantitySliderValue]} // Control the slider value
+          defaultValue={[quantitySliderValue]}
+          value={[quantitySliderValue]}
           max={20000}
           step={1}
           onValueChange={(value) => {
-            setQuantitySliderValue(value[0]); // Sync input with slider
+            setQuantitySliderValue(value[0]);
             onTokenQuantityChange(value[0]);
           }}
         />
@@ -124,24 +131,27 @@ export function TokenInputSection({
           <div className="w-full space-y-1 relative">
             <Label htmlFor="token-price" className="flex items-center justify-between">
               <span>{`${currency || "Token"} Price (USD)`}</span>
-              <span
-                className="ml-2 text-sm text-blue-500 cursor-pointer"
-                onClick={() => {
-                  onTokenPriceChange(currentPriceValue);
-                  setPriceSliderValue(currentPriceValue);
-                }}
-              >
-                Reset to current price
-              </span>
+              {/* Conditionally render the reset text */}
+              {showResetText && currency && (
+                <span
+                  className="ml-2 text-sm text-blue-500 cursor-pointer"
+                  onClick={() => {
+                    onTokenPriceChange(currentPriceValue);
+                    setPriceSliderValue(currentPriceValue);
+                  }}
+                >
+                  Reset to current price
+                </span>
+              )}
             </Label>
             <Input
               id="token-price"
               type="number"
-              value={tokenPrice} // Controlled input
+              value={tokenPrice}
               onChange={(e) => {
                 const value = Number(e.target.value);
                 if (isNaN(value)) return;
-                setPriceSliderValue(value); // Sync slider with input
+                setPriceSliderValue(value);
                 onTokenPriceChange(Number(value.toFixed(8)));
               }}
               placeholder={`Enter ${currency} Price (USD)`}
@@ -149,16 +159,20 @@ export function TokenInputSection({
           </div>
         </div>
         <Slider
-          defaultValue={[0]} // default value is 0
-          value={[priceSliderValue]} // Control the slider value
+          defaultValue={[0]}
+          value={[priceSliderValue]}
           max={20000}
           step={1}
           onValueChange={(value) => {
-            setPriceSliderValue(value[0]); // Sync input with slider
+            setPriceSliderValue(value[0]);
             onTokenPriceChange(value[0]);
+            // Show reset text only if a currency is selected
+            if (currency) {
+              setShowResetText(true);
+            }
           }}
         />
-        {loadingPrice && <div>Loading Price...</div>} {/* Display loading indicator */}
+        {loadingPrice && <div>Loading Price...</div>}
       </div>
     </div>
   );
