@@ -34,10 +34,13 @@ export function TokenInputSection({
   const setCollateralTokenPrice = usePositionStore(
     (state) => state.collateral.setTokenPrice,
   );
-  const setDebtTokenPrice = usePositionStore((state) => state.debt.setTokenPrice);
+  const setDebtTokenPrice = usePositionStore(
+    (state) => state.debt.setTokenPrice,
+  );
 
   // State for slider values, synced with input values
-  const [quantitySliderValue, setQuantitySliderValue] = useState<number>(tokenQuantity);
+  const [quantitySliderValue, setQuantitySliderValue] =
+    useState<number>(tokenQuantity);
   const [priceSliderValue, setPriceSliderValue] = useState<number>(tokenPrice);
   const [loadingPrice, setLoadingPrice] = useState<boolean>(false);
   const [currentPriceValue, setCurrentPriceValue] = useState<number>(0);
@@ -129,11 +132,14 @@ export function TokenInputSection({
       <div className="space-y-3">
         <div className="flex space-x-4">
           <div className="w-full space-y-1 relative">
-            <Label htmlFor="token-price" className="flex items-center justify-between">
+            <Label
+              htmlFor="token-price"
+              className="flex items-center justify-between"
+            >
               <span>{`${currency || "Token"} Price (USD)`}</span>
               {showResetText && currency && (
                 <span
-                  className="ml-2 text-sm text-blue-500 cursor-pointer"
+                  className="ml-2 text-xs text-blue-500 cursor-pointer"
                   onClick={() => {
                     onTokenPriceChange(currentPriceValue);
                     setPriceSliderValue(currentPriceValue);
