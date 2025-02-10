@@ -3,7 +3,10 @@ import { Slider } from "@/components/ui/slider";
 import { CurrencySelector } from "../currency-selector";
 import { Label } from "@/components/ui/label";
 import { CurrencyMode } from "@/libs/currency";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { fetchTokenPrice } from "@/libs/api";
+import { tokenAddresses } from "@/libs/token-address";
+import { usePositionStore } from "@/stores/position-store"; // Import the store
 
 export interface TokenInputSectionProps {
   currency: string | undefined; // currency can be undefined
@@ -28,9 +31,37 @@ export function TokenInputSection({
   onTokenPriceChange,
   mode, // ADD
 }: TokenInputSectionProps) {
+  const setCollateralTokenPrice = usePositionStore(
+    (state) => state.collateral.setTokenPrice,
+  );
+  const setDebtTokenPrice = usePositionStore((state) => state.debt.setTokenPrice);
+
   // State for slider values, synced with input values
   const [quantitySliderValue, setQuantitySliderValue] = useState<number>(tokenQuantity);
   const [priceSliderValue, setPriceSliderValue] = useState<number>(tokenPrice);
+  const [loadingPrice, setLoadingPrice] = useState<boolean>(false); // State to track price loading
+
+  const handleCurrencySelect = useCallback(
+    async (selectedCurrency: string) => {
+      onSelectCurrency(selectedCurrency);
+      setLoadingPrice(true); // Start loading
+      const address = tokenAddresses[selectedCurrency];
+      if (address) {
+        const fetchedPrice = await fetchTokenPrice(address);
+        if (fetchedPrice !== undefined) {
+          onTokenPriceChange(fetchedPrice); // Update local state
+          setPriceSliderValue(fetchedPrice); // Update slider
+          if (mode === "collateral") {
+            setCollateralTokenPrice(fetchedPrice); // Update store for collateral
+          } else if (mode === "debt") {
+            setDebtTokenPrice(fetchedPrice); // Update store for debt
+          }
+        }
+      }
+      setLoadingPrice(false); // End loading regardless of success or failure
+    },
+    [onSelectCurrency, onTokenPriceChange, setCollateralTokenPrice, setDebtTokenPrice, mode],
+  );
 
   useEffect(() => {
     setQuantitySliderValue(tokenQuantity);
@@ -40,7 +71,7 @@ export function TokenInputSection({
   return (
     <div className="space-y-4">
       <CurrencySelector
-        onSelectCurrency={onSelectCurrency}
+        onSelectCurrency={handleCurrencySelect} // Use handleCurrencySelect
         className="w-full"
         data-testid="currency-selector"
         mode={mode} // UPDATE
@@ -97,6 +128,7 @@ export function TokenInputSection({
               value={tokenPrice} // Controlled input
               onChange={(e) => {
                 const value = Number(e.target.value);
+                if (isNaN(value)) return;
                 setPriceSliderValue(value); // Sync slider with input
                 onTokenPriceChange(Number(value.toFixed(8)));
               }}
@@ -114,6 +146,7 @@ export function TokenInputSection({
             onTokenPriceChange(value[0]);
           }}
         />
+        {loadingPrice && <div>Loading Price...</div>} {/* Display loading indicator */}
       </div>
     </div>
   );
