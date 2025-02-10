@@ -3,6 +3,7 @@ import { Slider } from "@/components/ui/slider";
 import { CurrencySelector } from "../currency-selector";
 import { Label } from "@/components/ui/label";
 import { CurrencyMode } from "@/libs/currency";
+import { useState, useEffect } from "react";
 
 export interface TokenInputSectionProps {
   currency: string | undefined; // currency can be undefined
@@ -27,6 +28,15 @@ export function TokenInputSection({
   onTokenPriceChange,
   mode, // ADD
 }: TokenInputSectionProps) {
+  // State for slider values, synced with input values
+  const [quantitySliderValue, setQuantitySliderValue] = useState<number>(tokenQuantity);
+  const [priceSliderValue, setPriceSliderValue] = useState<number>(tokenPrice);
+
+  useEffect(() => {
+    setQuantitySliderValue(tokenQuantity);
+    setPriceSliderValue(tokenPrice);
+  }, [tokenQuantity, tokenPrice]);
+
   return (
     <div className="space-y-4">
       <CurrencySelector
@@ -43,10 +53,14 @@ export function TokenInputSection({
             <Input
               id="token-quantity"
               type="number"
-              value={tokenQuantity}
+              value={tokenQuantity} // Controlled input
               onChange={(e) => {
                 const value = Number(e.target.value);
                 if (value < 0) return;
+                setQuantitySliderValue(value); // Sync slider with input
+                if (!isNaN(value)) {
+                  setQuantitySliderValue(value); // Sync slider with input
+                }
                 onTokenQuantityChange(Number(value.toFixed(8)));
               }}
             />
@@ -62,10 +76,14 @@ export function TokenInputSection({
           </div>
         </div>
         <Slider
-          defaultValue={[0]}
+          defaultValue={[quantitySliderValue]} // Use state value
+          value={[quantitySliderValue]} // Control the slider value
           max={20000}
           step={1}
-          onValueChange={(value) => onTokenQuantityChange(value[0])}
+          onValueChange={(value) => {
+            setQuantitySliderValue(value[0]); // Sync input with slider
+            onTokenQuantityChange(value[0]);
+          }}
         />
       </div>
       <div className="space-y-3">
@@ -76,17 +94,25 @@ export function TokenInputSection({
             <Input
               id="token-price"
               type="number"
-              value={tokenPrice}
-              onChange={(e) => onTokenPriceChange(Number(e.target.value))}
+              value={tokenPrice} // Controlled input
+              onChange={(e) => {
+                const value = Number(e.target.value);
+                setPriceSliderValue(value); // Sync slider with input
+                onTokenPriceChange(Number(value.toFixed(8)));
+              }}
               placeholder={`Enter ${currency} Price (USD)`}
             />
           </div>
         </div>
         <Slider
-          defaultValue={[0]}
+          defaultValue={[0]} // default value is 0
+          value={[priceSliderValue]} // Control the slider value
           max={20000}
           step={1}
-          onValueChange={(value) => onTokenPriceChange(value[0])}
+          onValueChange={(value) => {
+            setPriceSliderValue(value[0]); // Sync input with slider
+            onTokenPriceChange(value[0]);
+          }}
         />
       </div>
     </div>
