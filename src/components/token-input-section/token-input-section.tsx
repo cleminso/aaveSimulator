@@ -137,18 +137,19 @@ export function TokenInputSection({
               className="flex items-center justify-between"
             >
               <span>{`${currency || "Token"} Price (USD)`}</span>
-              {showResetText && currency && (
-                <span
-                  className="ml-2 text-xs text-blue-500 cursor-pointer"
-                  onClick={() => {
-                    onTokenPriceChange(currentPriceValue);
-                    setPriceSliderValue(currentPriceValue);
-                    setShowResetText(false); // Hide the text after clicking
-                  }}
-                >
-                  Reset to current price
-                </span>
-              )}
+              {/* Reserve space for the reset text, even when hidden */}
+              <span
+                className={`ml-2 text-xs text-blue-500 cursor-pointer ${
+                  showResetText && currency ? "" : "invisible"
+                }`}
+                onClick={() => {
+                  onTokenPriceChange(currentPriceValue);
+                  setPriceSliderValue(currentPriceValue);
+                  setShowResetText(false);
+                }}
+              >
+                Reset to current price
+              </span>
             </Label>
             <Input
               id="token-price"
