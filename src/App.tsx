@@ -19,8 +19,8 @@ export default function App() {
             </p>
           </div>
           <div className="flex items-center space-x-4">
-            <img src={TwitterIcon} width="16" height="16" />
-            <img src={GithubIcon} width="16" height="16" />
+            <img src={TwitterIcon} width="24" height="23" />
+            <img src={GithubIcon} width="24" height="23" />
           </div>
         </div>
       </div>
