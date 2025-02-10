@@ -14,13 +14,19 @@ export default function App() {
           <p className="text-sm text-zinc-700">Made by cleminso</p>
           <div className="flex-1 flex justify-center">
             <p className="text-sm text-zinc-700 text-center">
-              This is an experimental simulator. Don't make financial decisions
-              based solely on the results of this app
+              This is an experimental simulator. Don't make any financial
+              decisions based on the results of this app
             </p>
           </div>
           <div className="flex items-center space-x-4">
-            <a href="https://x.com/cleminso" target="_blank" rel="noopener noreferrer"><img src={TwitterIcon} width="24" height="23" /></a>
-            <img src={GithubIcon} width="24" height="23" />
+            <a
+              href="https://x.com/cleminso"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={TwitterIcon} width="24" height="23" />
+            </a>
+            <img src={GithubIcon} width="24" height="24" />
           </div>
         </div>
       </div>
