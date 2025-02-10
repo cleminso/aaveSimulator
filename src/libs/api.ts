@@ -8,7 +8,12 @@ export const fetchGraphQLData = async (
   query: string,
   variables: Record<string, any>,
 ) => {
-  const data = await client.request(gql`${query}`, variables);
+  const data = await client.request(
+    gql`
+      ${query}
+    `,
+    variables,
+  );
   return data;
 };
 
@@ -18,7 +23,7 @@ export const fetchTokenPrice = async (
   try {
     const coinId = `ethereum:${tokenAddress}`; // Format coin identifier for DeFiLlama API
     const response = await fetch(
-      `https://api.llama.fi/v2/prices/current/${coinId}`, //  <---  Using the correct endpoint
+      `https://coins.llama.fi/prices/current/${coinId}`,
     );
 
     if (!response.ok) {
