@@ -26,7 +26,13 @@ export default function App() {
             >
               <img src={TwitterIcon} width="24" height="23" />
             </a>
-            <img src={GithubIcon} width="24" height="24" />
+            <a
+              href="https://github.com/cleminso/aaveSimulator"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={GithubIcon} width="24" height="24" />
+            </a>
           </div>
         </div>
       </div>
