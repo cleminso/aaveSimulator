@@ -15,7 +15,7 @@ export default function App() {
           <div className="flex-1 flex justify-center">
             <p className="text-sm text-zinc-700 text-center">
               This is an experimental simulator. Don't make any financial
-              decisions based on the results of this app
+              decisions based on the results of this app.
             </p>
           </div>
           <div className="flex items-center space-x-4">
