@@ -25,7 +25,6 @@ export function TokenInputSection({
   onSelectCurrency,
   tokenQuantity,
   onTokenQuantityChange,
-  collateralValue,
   usdValue,
   tokenPrice,
   onTokenPriceChange,
@@ -110,12 +109,7 @@ export function TokenInputSection({
           </div>
           <div className="w-1/3 space-y-1">
             <Label htmlFor="usd-value">USD Value</Label>
-            <Input
-              id="usd-value"
-              type="number"
-              value={usdValue}
-              disabled
-            />
+            <Input id="usd-value" type="number" value={usdValue} disabled />
           </div>
         </div>
         <Slider
